@@ -43,16 +43,16 @@ Route::get('/suspend', [AuthController::class, 'suspend']);
 Route::group(['middleware' => ['auth', 'OtpVerification:Customer,Tentor,Admin,Super']], function () {
     Route::post('/get-otp-register', [VerificationController::class, 'getOtpRegister']);
 });
-Route::group(['middleware' => ['auth', 'checkRole:Customer,Tentor,Admin,Super']], function () {//all users
+Route::group(['middleware' => ['auth', 'CheckRole:Customer,Tentor,Admin,Super']], function () {//all users
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:Customer']], function () {
+Route::group(['middleware' => ['auth', 'CheckRole:Customer']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
 Route::prefix('tentor')->group(function(){
-    Route::group(['middleware' => ['auth', 'checkRole:Tentor']], function () {
+    Route::group(['middleware' => ['auth', 'CheckRole:Tentor']], function () {
         Route::get('', [DashboardController::class, 'tentor']);
         // Route::post('get-otp-wd', [VerificationController::class, 'getOtpWD']);
         // Route::get('withdrawals/create', [WithdrawalController::class, 'create']);
@@ -61,7 +61,7 @@ Route::prefix('tentor')->group(function(){
 });
 
 Route::prefix('admin')->group(function(){
-    Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
+    Route::group(['middleware' => ['auth', 'CheckRole:Super,Admin']], function () {
         Route::get('', [DashboardController::class, 'admin']);
         // Route::get('withdrawals', [WithdrawalController::class, 'index']);
         // Route::post('withdrawals/update', [WithdrawalController::class, 'update']);

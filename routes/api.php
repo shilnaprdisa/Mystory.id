@@ -42,13 +42,13 @@ Route::prefix('v1')->group(function(){
 
         Route::get('logout', [AuthController::class, 'logout']);
 
-        Route::group(['middleware' => ['auth', 'checkRole:Tentor']], function () {
+        Route::group(['middleware' => ['auth', 'CheckRole:Tentor']], function () {
             Route::post('get-otp-wd', [VerificationController::class, 'getOtpWD']);
             Route::get('withdrawals/create', [WithdrawalController::class, 'create']);
             Route::post('withdrawals', [WithdrawalController::class, 'store']);
 	    });
 
-        Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
+        Route::group(['middleware' => ['auth', 'CheckRole:Super,Admin']], function () {
             Route::get('withdrawals', [WithdrawalController::class, 'index']);
             Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
 
