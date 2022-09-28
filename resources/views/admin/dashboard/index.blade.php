@@ -23,8 +23,8 @@
                             <div class="card-body">
                                 <div class="instructor-inner">
                                     <h6>REVENUE</h6>
-                                    <h4 class="instructor-text-success">$467.34</h4>
-                                    <p>Earning this month</p>
+                                    <h4 class="instructor-text-success">{{rupiah($revenue)}}</h4>
+                                    <p>Earning this year</p>
                                 </div>
                             </div>
                         </div>
@@ -33,9 +33,9 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>STUDENTS ENROLLMENTS</h6>
-                                    <h4 class="instructor-text-info">12,000</h4>
-                                    <p>New this month</p>
+                                    <h6>STUDENTS</h6>
+                                    <h4 class="instructor-text-info">{{angka($students)}}</h4>
+                                    <p>New this year</p>
                                 </div>
                             </div>
                         </div>
@@ -44,9 +44,9 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>COURSES RATING</h6>
-                                    <h4 class="instructor-text-warning">4.80</h4>
-                                    <p>Rating this month</p>
+                                    <h6>TENTORS</h6>
+                                    <h4 class="instructor-text-warning">{{angka($tentors)}}</h4>
+                                    <p>Tentor this year</p>
                                 </div>
                             </div>
                         </div>
@@ -96,61 +96,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="sell-table-group d-flex align-items-center">
-                                                            <div class="sell-group-img">
-                                                                <a href="course-details.html">
-                                                                    <img src="{{asset('assets/img/course/course-10.jpg')}}"
-                                                                        class="img-fluid " alt="">
-                                                                </a>
+                                                @foreach ($best_sales as $sales)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-group-img">
+                                                                    <a href="#!">
+                                                                        <img src="{{asset('assets/img/course/course-10.jpg')}}"
+                                                                            class="img-fluid " alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="sell-tabel-info">
+                                                                    </p>
+                                                                    <p><a href="#!">{{$sales->course}}</a>
+                                                                </div>
                                                             </div>
-                                                            <div class="sell-tabel-info">
-                                                                </p>
-                                                                <p><a href="course-details.html">Information About UI/UX
-                                                                        Design Degree</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>34</td>
-                                                    <td>$3,145.23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="sell-table-group d-flex align-items-center">
-                                                            <div class="sell-group-img">
-                                                                <a href="course-details.html">
-                                                                    <img src="{{asset('assets/img/course/course-11.jpg')}}"
-                                                                        class="img-fluid " alt="">
-                                                                </a>
-                                                            </div>
-                                                            <div class="sell-tabel-info">
-                                                                <p><a href="course-details.html">Wordpress for Beginners
-                                                                        - Master Wordpress Quickly</a></p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>34</td>
-                                                    <td>$3,145.23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="sell-table-group d-flex align-items-center">
-                                                            <div class="sell-group-img">
-                                                                <a href="course-details.html">
-                                                                    <img src="{{asset('assets/img/course/course-12.jpg')}}"
-                                                                        class="img-fluid " alt="">
-                                                                </a>
-                                                            </div>
-                                                            <div class="sell-tabel-info">
-                                                                <p><a href="course-details.html">Sketch from A to Z
-                                                                        (2022): Become an app designer</a></p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>34</td>
-                                                    <td>$3,145.23</td>
-                                                </tr>
+                                                        </td>
+                                                        <td>{{$sales->total_sales}}</td>
+                                                        <td>{{rupiah($sales->total_price)}}</td>
+                                                    </tr>                                                    
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <!-- /Referred Users-->

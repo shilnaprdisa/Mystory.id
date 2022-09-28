@@ -24,61 +24,40 @@
                         </a>
                     </div>
                     <ul class="main-nav">
-                        @if (auth()->user()->role == 'Customer')
-                            
-                        @else
-                            
-                        @endif
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="/admin">Dashboard</a>
                         </li>
-                        <li class="has-submenu active">
-                            <a href="">Instructor <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li class="active"><a href="instructor-dashboard.html">Dashboard</a></li>
-                                <li class="has-submenu">
-                                    <a href="instructor-list.html">Instructor</a>
-                                    <ul class="submenu">
-                                        <li><a href="instructor-list.html">List</a></li>
-                                        <li><a href="instructor-grid.html">Grid</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="#!">Courses</a>
                         </li>
-                        <li class="has-submenu">
-                            <a href="">Student <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu first-submenu">
-                                <li class="has-submenu ">
-                                    <a href="students-list.html">Student</a>
-                                    <ul class="submenu">
-                                        <li><a href="students-list.html">List</a></li>
-                                        <li><a href="students-grid.html">Grid</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="#!">Classes</a>
                         </li>
-                        <li class="has-submenu">
-                            <a href="">Pages <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li><a href="notifications.html">Notification</a></li>
-                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                            </ul>
+                        <li>
+                            <a href="#!">Users</a>
                         </li>
-                        <li class="has-submenu">
-                            <a href="">Blog <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li><a href="blog-list.html">Blog List</a></li>
-                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                            </ul>
+                        <li>
+                            <a href="#!">Verifications</a>
                         </li>
-                        <li class="login-link">
-                            <a href="login.html">Login / Signup</a>
+                        <li>
+                            <a href="#!">Transactions</a>
+                        </li>
+                        <li>
+                            <a href="#!">Earnings</a>
+                        </li>
+                        <li>
+                            <a href="#!">Withdrawals</a>
+                        </li>
+                        <li>
+                            <a href="#!">Reviews</a>
+                        </li>
+                        <li>
+                            <a href="#!">Notifications</a>
                         </li>
                     </ul>
                 </div>
                 <ul class="nav header-navbar-rht">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="instructor-chat.html"><img src="{{asset('assets/img/icon/messages.svg')}}" alt="img"></a>
                     </li>
                     <li class="nav-item cart-nav">
@@ -306,7 +285,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item user-nav">
                         <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                             <span class="user-img">
@@ -321,20 +300,17 @@
                                         class="avatar-img rounded-circle">
                                 </div>
                                 <div class="user-text">
-                                    <h6>Jenny Wilson</h6>
-                                    <p class="text-muted mb-0">Instructor</p>
+                                    <h6>{{auth()->user()->name}}</h6>
+                                    <p class="text-muted mb-0">{{auth()->user()->role}}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="instructor-dashboard.html"><i class="feather-home me-1"></i>
+                            <a class="dropdown-item" href="/admin"><i class="feather-home me-1"></i>
                                 Dashboard</a>
-                            <a class="dropdown-item" href="instructor-edit-profile.html"><i
-                                    class="feather-star me-1"></i> Edit Profile</a>
-                            <div class="dropdown-item night-mode">
-                                <span><i class="feather-moon me-1"></i> Night Mode </span>
-                                <div class="form-check form-switch check-on m-0">
-                                    <input class="form-check-input" type="checkbox" id="night-mode">
-                                </div>
-                            </div>
+                            <a class="dropdown-item" href="#!"><i
+                                    class="feather-user me-1"></i> Edit Profile</a>
+                            <a class="dropdown-item" href="#!"><i
+                                    class="feather-settings me-1"></i> Settings</a>
+                            
                             <a class="dropdown-item" href="/logout"><i class="feather-log-out me-1"></i> Logout</a>
                         </div>
                     </li>

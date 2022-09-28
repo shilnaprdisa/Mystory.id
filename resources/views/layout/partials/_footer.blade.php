@@ -24,13 +24,13 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-menu">
-                        <h2 class="footer-title">For Instructor</h2>
+                        <h2 class="footer-title">For Student</h2>
                         <ul>
-                            <li><a href="instructor-profile.html">Profile</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="instructor-list.html">Instructor</a></li>
-                            <li><a href="deposit-instructor-dashboard.html"> Dashboard</a></li>
+                            <li><a href="#!">Panduan</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register/Customer">Register</a></li>
+                            <li><a href="#!">FAQ</a></li>
+                            <li><a href="#!"> Logout</a></li>
                         </ul>
                     </div>
                     <!-- /Footer Widget -->
@@ -41,13 +41,13 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-menu">
-                        <h2 class="footer-title">For Student</h2>
+                        <h2 class="footer-title">For Tentor</h2>
                         <ul>
-                            <li><a href="student-profile.html">Profile</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="students-list.html">Student</a></li>
-                            <li><a href="deposit-student-dashboard.html"> Dashboard</a></li>
+                            <li><a href="#!">Panduan</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register/Tentor">Register</a></li>
+                            <li><a href="#!">FAQ</a></li>
+                            <li><a href="#!"> Logout</a></li>
                         </ul>
                     </div>
                     <!-- /Footer Widget -->
@@ -58,17 +58,11 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-contact">
-                        <h2 class="footer-title">News letter</h2>
-                        <div class="news-letter">
-                            <form>
-                                <input type="text" class="form-control" placeholder="Enter your email address"
-                                    name="email">
-                            </form>
-                        </div>
+                        <h2 class="footer-title">Contact</h2>
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <img src="assets/img/icon/icon-20.svg" alt="" class="img-fluid">
-                                <p> 3556 Beech Street, San Francisco,<br> California, CA 94108 </p>
+                                <p> Jl.Raya Gembong, Kedungwuni,<br> Pekalongan, 51173 </p>
                             </div>
                             <p>
                                 <img src="assets/img/icon/icon-19.svg" alt="" class="img-fluid">
@@ -76,7 +70,7 @@
                             </p>
                             <p class="mb-0">
                                 <img src="assets/img/icon/icon-21.svg" alt="" class="img-fluid">
-                                +19 123-456-7890
+                                082158863345
                             </p>
                         </div>
                     </div>

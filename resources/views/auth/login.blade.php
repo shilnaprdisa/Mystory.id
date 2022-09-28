@@ -46,24 +46,6 @@
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 							</div>
 						</div>
-						<div class="welcome-login">
-							<div class="login-banner">
-								<img src="{{config('belajarin.logo')}}" class="img-fluid" alt="Logo">
-							</div>
-							<div class="mentor-course text-center">
-								<h2>Selamat datang di <br>Belajarin.Id</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-							</div>
-						</div>
-						<div class="welcome-login">
-							<div class="login-banner">
-								<img src="{{config('belajarin.logo')}}" class="img-fluid" alt="Logo">
-							</div>
-							<div class="mentor-course text-center">
-								<h2>Selamat datang di <br>Belajarin.Id</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- /Login Banner -->

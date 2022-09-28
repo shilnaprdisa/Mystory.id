@@ -809,12 +809,13 @@ button.bg-danger:hover {
 	background-color: #FFF;
 }
 .main-nav {
-	display: -webkit-box;
+	/* display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0; */
+	display: none;
 }
 .main-nav > li.active > a {
 	color: #F66962;
@@ -10069,6 +10070,9 @@ input[type=password]::-ms-clear
 }
 
 @media (max-width: 991.98px) {
+	.theiaStickySidebar{
+		display: none;
+	}
 	.main-nav {
 		padding: 0;
 		-ms-flex-direction: column;
@@ -10076,6 +10080,7 @@ input[type=password]::-ms-clear
 		padding-left: 0;
 		margin-bottom: 0;
 		list-style: none;
+		display: block;
 	}
 	.main-nav ul {
 		background-color: #f38681;
@@ -10770,9 +10775,9 @@ input[type=password]::-ms-clear
 }
 
 @media (max-width: 767.98px) {
-	.navbar-header {
+	/* .navbar-header {
 		width: 100%;
-	}
+	} */
 	.logo {
 		margin-right: 0;
 		width: 100%;
@@ -10793,11 +10798,11 @@ input[type=password]::-ms-clear
 	.footer .footer-widget .footer-logo img {
 		max-height:40px;
 	}
-	#mobile_btn {
+	/* #mobile_btn {
 		top: 18px;
 		margin-right: 0;
 		position: absolute;
-	}
+	} */
 	.logo img,
 	.menu-logo img {
 		width: 120px;
@@ -10871,9 +10876,9 @@ input[type=password]::-ms-clear
 	.bar-icon span {
 		background-color: #f66962;
 	}
-	.header-navbar-rht {
+	/* .header-navbar-rht {
 		display: none;
-	}
+	} */
 	.course-key {
 		position: relative;
 		top: 0;
@@ -11890,6 +11895,12 @@ input[type=password]::-ms-clear
 }
 
 @media (max-width: 575.98px) {
+	.logo{
+		display: none;
+	}
+	.main-nav{
+		display: block;
+	}
 	.video-thumbnail img {
 		min-height: 150px;
 		object-fit: cover;
