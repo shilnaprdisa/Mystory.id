@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Earning;
-use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        return 'halaman customer';
+        return '<h2>halaman dashboard student masih dalam proses development </h2>';
     }
     public function tentor(){
-        return 'halaman tentor';
+        return '<h2>halaman dashboard tentor masih dalam proses development </h2>';
     }
     public function admin(){
         $revenue = Earning::whereYear('created_at', date('Y'))->sum('amount');
