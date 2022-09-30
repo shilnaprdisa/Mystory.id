@@ -19,7 +19,7 @@ class TransactionSeeder extends Seeder
     public function run()
     {
         $skills = Skill::all();
-        $users = User::where('role', 'customer')->get();
+        $users = User::where('role', 'Student')->get();
         $time = rand(1,5);
         $setting_fee = Setting::where('name', 'AdminFee')->first();
         $cutting = ($setting_fee->type == 'Persen') ? $setting_fee->value / 100 : $setting_fee->value ;

@@ -64,19 +64,19 @@ class UserSeeder extends Seeder
             'remember_token' => uniqid()
         ]);
         User::create([
-            'name' => 'Customer',
-            'username' => 'Customer',
+            'name' => 'Student',
+            'username' => 'Student',
             'iso_code' => 'ID',
             'country_code' => '62',
             'phone' => '82149990077',
-            'email' => 'customer@gmail.com',
-            'role' => 'Customer',
+            'email' => 'student@gmail.com',
+            'role' => 'Student',
             'status' => 'Active',
             'gender' => 'Male',
             'rating_score' => '0',
             'is_online' => false,
             'is_verified' => false,
-            'password' => 'customer',
+            'password' => 'student',
             'remember_token' => uniqid()
         ]);
     }

@@ -25,7 +25,7 @@ class AuthController extends Controller
         $user = User::whereEmail($request->email)->first() ?? User::wherePhone($this->_formatPhone($request->email))->first() ?? User::whereUsername($request->email)->firstOrFail();
         if($user->status == 'Banned' or $user->status == 'Deleted'){
             return redirect('/suspend');
-        }elseif($user->role == 'Customer'){
+        }elseif($user->role == 'Student'){
             return redirect('/dashboard');
         }elseif($user->role == 'Tentor'){
             return redirect('/tentor');

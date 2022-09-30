@@ -100,12 +100,12 @@
                                                     <tr>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
-                                                                <div class="sell-group-img">
+                                                                {{-- <div class="sell-group-img">
                                                                     <a href="#!">
                                                                         <img src="{{asset('assets/img/course/course-10.jpg')}}"
                                                                             class="img-fluid " alt="">
                                                                     </a>
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class="sell-tabel-info">
                                                                     </p>
                                                                     <p><a href="#!">{{$sales->course}}</a>

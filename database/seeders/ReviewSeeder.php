@@ -18,14 +18,14 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        $customers = User::where('role', 'Customer')->get();
+        $students = User::where('role', 'Student')->get();
         $skills = Skill::all();
-        foreach($customers as $customer){
+        foreach($students as $student){
             foreach($skills as $skill){
-                $cek = Transaction::where('user_id', $customer->id)->where('skill_id', $skill->id)->first();
+                $cek = Transaction::where('user_id', $student->id)->where('skill_id', $skill->id)->first();
                 if($cek)
                 Review::create([
-                    'user_id' => $customer->id,
+                    'user_id' => $student->id,
                     'skill_id' => $skill->id,
                     'rating' => rand(1,5),
                 ]);

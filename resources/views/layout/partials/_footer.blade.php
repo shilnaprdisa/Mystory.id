@@ -28,7 +28,7 @@
                         <ul>
                             <li><a href="#!">Panduan</a></li>
                             <li><a href="/login">Login</a></li>
-                            <li><a href="/register/Customer">Register</a></li>
+                            <li><a href="/register/Student">Register</a></li>
                             <li><a href="#!">FAQ</a></li>
                             <li><a href="#!"> Logout</a></li>
                         </ul>

@@ -40,14 +40,14 @@ Route::get('/verify/{encrypt}', [VerificationController::class, 'viaget']);
 
 Route::get('/suspend', [AuthController::class, 'suspend']);
 
-Route::group(['middleware' => ['auth', 'OtpVerification:Customer,Tentor,Admin,Super']], function () {
+Route::group(['middleware' => ['auth', 'OtpVerification:Student,Tentor,Admin,Super']], function () {
     Route::post('/get-otp-register', [VerificationController::class, 'getOtpRegister']);
 });
-Route::group(['middleware' => ['auth', 'CheckRoles:Customer,Tentor,Admin,Super']], function () {//all users
+Route::group(['middleware' => ['auth', 'CheckRoles:Student,Tentor,Admin,Super']], function () {//all users
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-Route::group(['middleware' => ['auth', 'CheckRoles:Customer']], function () {
+Route::group(['middleware' => ['auth', 'CheckRoles:Student']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 

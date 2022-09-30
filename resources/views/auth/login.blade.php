@@ -104,7 +104,7 @@
 									<li><a href="#"><img src="{{asset('assets/img/net-icon-02.png')}}" class="img-fluid" alt="Logo">Sign In using Facebook</a></li>
 								</ul>
 							</div> --}}
-							<p class="mb-0">Belum punya akun? <a href="/register/Customer">Daftar</a></p>
+							<p class="mb-0">Belum punya akun? <a href="/register/Student">Daftar</a></p>
 							<p class="mb-0">Anda seorang tentor? <a href="/register/Tentor">Daftar Sebagai Tentor</a></p>
 						</div>
 					</div>

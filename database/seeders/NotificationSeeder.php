@@ -18,7 +18,7 @@ class NotificationSeeder extends Seeder
     {
         $users = User::all();
         foreach($users as $user){
-            if($user->role == 'Customer'){
+            if($user->role == 'Student'){
                 Notification::create([
                     'user_id' => $user->id,
                     'title' => 'Berhasil Menemukan Tentor',

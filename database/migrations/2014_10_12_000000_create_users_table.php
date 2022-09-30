@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('iso_code', 10);
             $table->string('country_code', 10);
-            $table->enum('role', ['Super', 'Admin', 'Tentor', 'Customer']);
+            $table->enum('role', ['Super', 'Admin', 'Tentor', 'Student']);
             $table->enum('status', ['Pending', 'Active', 'Banned', 'Deleted']);
             $table->enum('gender', ['Male', 'Female']);
             $table->bigInteger('rating_score')->default(0);

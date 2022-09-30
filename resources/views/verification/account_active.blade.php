@@ -44,7 +44,7 @@
                 <a href="/login"
                     class="btn btn-primary btn-start mt-4">Login Sekarang</a>                    
                 @else
-                <a href="{{($role == 'Customer') ? '/dashboard' : ( $role == 'Tentor' ? '/tentor' : '/admin' )}}"
+                <a href="{{($role == 'Student') ? '/dashboard' : ( $role == 'Tentor' ? '/tentor' : '/admin' )}}"
                     class="btn btn-primary btn-start mt-4">Ke Halaman Dashboard</a>                    
                 @endif
             </div>
