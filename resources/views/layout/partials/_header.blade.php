@@ -28,13 +28,13 @@
                             <a href="/admin">Dashboard</a>
                         </li>
                         <li>
-                            <a href="#!">Courses</a>
+                            <a href="/admin/courses">Courses</a>
                         </li>
                         <li>
-                            <a href="#!">Classes</a>
+                            <a href="/admin/levels">Classes</a>
                         </li>
                         <li>
-                            <a href="#!">Users</a>
+                            <a href="/admin/users">Users</a>
                         </li>
                         <li>
                             <a href="#!">Verifications</a>

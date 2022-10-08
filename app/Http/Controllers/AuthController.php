@@ -34,6 +34,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+        $request['phone'] = $this->_formatPhone($request->phone);
         $this->_validation($request);
         if($request->role == 'Admin' or $request->role == 'Super'){
             return response()->json([
@@ -41,7 +42,6 @@ class AuthController extends Controller
                 'status_code' => 400,
             ], Response::HTTP_BAD_REQUEST);
         }
-        $request['phone'] = $this->_formatPhone($request->phone);
         $request['status'] = 'Pending';
         $user = User::create($request->all());
         $request->request->add(['user_id' => $user->id]);

@@ -61,15 +61,15 @@
                         <h2 class="footer-title">Contact</h2>
                         <div class="footer-contact-info">
                             <div class="footer-address">
-                                <img src="assets/img/icon/icon-20.svg" alt="" class="img-fluid">
+                                <img src="{{asset('assets/img/icon/icon-20.svg')}}" alt="" class="img-fluid">
                                 <p> Jl.Raya Gembong, Kedungwuni,<br> Pekalongan, 51173 </p>
                             </div>
                             <p>
-                                <img src="assets/img/icon/icon-19.svg" alt="" class="img-fluid">
+                                <img src="{{asset('assets/img/icon/icon-19.svg')}}" alt="" class="img-fluid">
                                 belajarin@example.com
                             </p>
                             <p class="mb-0">
-                                <img src="assets/img/icon/icon-21.svg" alt="" class="img-fluid">
+                                <img src="{{asset('assets/img/icon/icon-21.svg')}}" alt="" class="img-fluid">
                                 082158863345
                             </p>
                         </div>

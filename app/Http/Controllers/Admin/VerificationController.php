@@ -59,12 +59,12 @@ class VerificationController extends Controller
         }elseif($request->send_via == 'SMS'){
             //sms
         }else{
-            // Mail::raw("Kode verifikasi anda adalah $otp, atau kunjungi link berikut $link", function($message) use($verification){
-            //     $message->to($verification->user->email,$verification->user->name);
-            //     $message->subject("Verifikasi akun Belajarin.Id");
-            // });
-            $text = ['subject' => 'Verifikasi akun Belajarin.Id'];
-            Mail::to($verification->user->email)->send(new OtpEmail($text));
+            Mail::raw("Kode verifikasi anda adalah $otp, atau kunjungi link berikut $link", function($message) use($verification){
+                $message->to($verification->user->email,$verification->user->name);
+                $message->subject("Verifikasi akun Belajarin.Id");
+            });
+            // $text = ['subject' => 'Verifikasi akun Belajarin.Id'];
+            // Mail::to($verification->user->email)->send(new OtpEmail($text));
         }
         $type = $request->type;
         return view('verification.verify', compact('user_id','type'));

@@ -67,8 +67,8 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany(Notification::class);
     }
-    public function addresses(){
-        return $this->hasMany(Address::class);
+    public function address(){
+        return $this->hasOne(Address::class);
     }
     public function verifications(){
         return $this->hasMany(Verification::class);

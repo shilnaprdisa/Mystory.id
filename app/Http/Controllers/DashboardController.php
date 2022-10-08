@@ -25,11 +25,6 @@ class DashboardController extends Controller
             ->groupBy('course')
             ->orderBy('total_price', 'desc')
             ->get();
-        $earnings = DB::table('earnings')
-            ->select('course', DB::raw('count(*) as total_sales'),DB::raw('sum(price) as total_price'))
-            ->groupBy('course')
-            ->orderBy('total_price', 'desc')
-            ->get();
         return view('admin.dashboard.index', compact('revenue', 'students', 'tentors', 'best_sales'));
     }
 }

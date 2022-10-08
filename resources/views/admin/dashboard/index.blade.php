@@ -35,7 +35,7 @@
                                 <div class="instructor-inner">
                                     <h6>STUDENTS</h6>
                                     <h4 class="instructor-text-info">{{angka($students)}}</h4>
-                                    <p>New this year</p>
+                                    <p>New Students this year</p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 <div class="instructor-inner">
                                     <h6>TENTORS</h6>
                                     <h4 class="instructor-text-warning">{{angka($tentors)}}</h4>
-                                    <p>Tentor this year</p>
+                                    <p>New Tentors this year</p>
                                 </div>
                             </div>
                         </div>

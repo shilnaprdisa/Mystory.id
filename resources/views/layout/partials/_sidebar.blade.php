@@ -3,23 +3,23 @@
         <div class="settings-menu">
             <h3>DASHBOARD</h3>
             <ul>
-                <li class="nav-item active">
+                <li class="nav-item @if(request()->is('admin')) {{'active'}} @endif">
                     <a href="/admin" class="nav-link">
                         <i class="feather-home"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                <li class="nav-item @if(request()->is('admin/courses')) {{'active'}} @endif">
+                    <a href="/admin/courses" class="nav-link">
                         <i class="feather-book"></i> Courses
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                <li class="nav-item @if(request()->is('admin/levels')) {{'active'}} @endif">
+                    <a href="/admin/levels" class="nav-link">
                         <i class="feather-server"></i> Classes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                    <a href="/admin/users" class="nav-link">
                         <i class="feather-users"></i> Users
                     </a>
                 </li>

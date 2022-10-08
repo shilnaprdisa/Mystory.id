@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\AuthController;
@@ -66,9 +68,9 @@ Route::prefix('admin')->group(function(){
         // Route::get('withdrawals', [WithdrawalController::class, 'index']);
         // Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
     
-        // Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class);
         Route::resource('courses', CourseController::class);
-        // Route::resource('levels', LevelController::class);
+        Route::resource('levels', LevelController::class);
         // Route::resource('skills', SkillController::class);
     
         // Route::post('payment', [TransactionController::class, 'payment']);
