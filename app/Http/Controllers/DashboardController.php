@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        return '<h2>halaman dashboard student masih dalam proses development </h2>';
+        return '<h2>halaman dashboard student sedang dalam pengembangan </h2>';
     }
     public function tentor(){
-        return '<h2>halaman dashboard tentor masih dalam proses development </h2>';
+        return '<h2>halaman dashboard tentor sedang dalam pengembangan </h2>';
     }
     public function admin(){
         $revenue = Earning::whereYear('created_at', date('Y'))->sum('amount');

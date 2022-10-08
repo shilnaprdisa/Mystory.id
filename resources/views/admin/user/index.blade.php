@@ -143,23 +143,23 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Add New Class</h5>
+                <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/levels" method="post">
+            <form action="/admin/users" method="post">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="form-control-label">Class</label>
                         <input type="number" name="number" class="form-control" placeholder="Enter class number">
                     </div>
                     <div class="form-group">
                         <label class="form-control-label">Roman</label>
                         <input type="text" name="roman" class="form-control" placeholder="Enter roman numeral">
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
