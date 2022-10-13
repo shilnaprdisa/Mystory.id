@@ -141,7 +141,7 @@ class TransactionController extends Controller
         $admin_fee = ($setting_fee->type == 'Persen') ? $sub_total * $setting_fee->value / 100 : $setting_fee->value ;
         $request->request->add([
             'user_id' => $user->id,'skill_id' => $request->skill_id, 'course' => $skill->course->name,
-            'level' => $skill->level->number, 'roman' => $skill->level->roman, 'price' => $skill->price,
+            'level' => $skill->level->name, 'price' => $skill->price,
             'time' => $request->time, 'admin_fee' => $admin_fee, 'total_price' => $sub_total + $admin_fee,
             'status' => $status
         ]);

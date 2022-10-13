@@ -22,9 +22,9 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>REVENUE</h6>
-                                    <h4 class="instructor-text-success">{{rupiah($revenue)}}</h4>
-                                    <p>Earning this year</p>
+                                    <h6>TRANSACTIONS</h6>
+                                    <h4 class="instructor-text-success">{{$transactions}}</h4>
+                                    <p>Transactions this year</p>
                                 </div>
                             </div>
                         </div>
@@ -48,18 +48,6 @@
                                     <h4 class="instructor-text-warning">{{angka($tentors)}}</h4>
                                     <p>New Tentors this year</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card instructor-card">
-                            <div class="card-header">
-                                <h4>Earnings</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="instructor_chart"></div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @push('title')
-<title>Belajarin.Id - Classes</title>
+<title>Belajarin.Id - Transactions</title>
 @endpush
 @push('css')
 <!-- Feather CSS -->
@@ -30,8 +30,8 @@
                         <div class="settings-widget">
                             <div class="settings-inner-blk p-0">
                                 <div class="sell-course-head comman-space">
-                                    <h3>Classes</h3>
-                                    {{-- <p>Manage your classes and its update like live, draft and insight.</p> --}}
+                                    <h3>Transactions</h3>
+                                    {{-- <p>Manage your transactions and its update like live, draft and insight.</p> --}}
                                 </div>
                                 <div class="comman-space pb-0">
                                     <div class="instruct-search-blk">
@@ -45,10 +45,10 @@
                                                                 placeholder="Search our courses">
                                                         </div>
                                                     </div>
-                                                    <div class="col-6 col-lg-6 col-item text-end">
+                                                    {{-- <div class="col-6 col-lg-6 col-item text-end">
                                                         <a href="#!"
                                                             class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLevelModal">New Class</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </form>
                                         </div>
@@ -59,34 +59,74 @@
                                         <table class="table table-nowrap mb-2">
                                             <thead>
                                                 <tr>
-                                                    <th>NUMBER</th>
-                                                    <th>NAME</th>
+                                                    <th>STUDENT</th>
+                                                    <th>TENTOR</th>
+                                                    <th>COURSE</th>
+                                                    <th>CLASS</th>
+                                                    <th>TIME</th>
+                                                    <th>TOTAL PRICE</th>
+                                                    <th>STATUS</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($levels as $level)
+                                                @foreach ($transactions as $transaction)
                                                     <tr>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$level->number}}</a></p>
+                                                                    <p><a href="#!">{{$transaction->user->name}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$level->name}}</a></p>
+                                                                    <p><a href="#!">{{$transaction->skill->user->name}}</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{$transaction->course}}</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{$transaction->level}}</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{$transaction->time}} Hours</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{rupiah($transaction->total_price)}}</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{$transaction->status}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
                                                                 <button type="button"
-                                                                    class="btn btn-sm btn-success">Edit</button>
+                                                                    class="btn btn-sm btn-success">View</button>
                                                                 <button type="button"
-                                                                    class="btn btn-sm btn-danger">Delete</button>
+                                                                    class="btn btn-sm btn-dark">Edit</button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -109,7 +149,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addLevelModal" tabindex="-1" aria-labelledby="addLevelModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="addLevelModal" tabindex="-1" aria-labelledby="addLevelModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -134,7 +174,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endpush
 

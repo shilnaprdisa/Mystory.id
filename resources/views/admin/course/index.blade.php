@@ -74,7 +74,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td>{{(isset($course->levels) ? $course->levels->count() : 0)}}</td>
+                                                        <td>{{$course->skills->count()}}</td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
                                                                 <button type="button"

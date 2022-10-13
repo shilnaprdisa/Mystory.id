@@ -18,8 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('skill_id')->constrained('skills');
             $table->string('course');
-            $table->integer('level');
-            $table->string('roman');
+            $table->string('level');
             $table->bigInteger('price');
             $table->integer('time');
             $table->bigInteger('admin_fee');

@@ -18,23 +18,23 @@
                         <i class="feather-server"></i> Classes
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(request()->is('admin/users')) {{'active'}} @endif">
                     <a href="/admin/users" class="nav-link">
                         <i class="feather-users"></i> Users
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#!" class="nav-link">
                         <i class="feather-lock"></i> Verifications
-                    </a>
+                    </a> --}}
                 </li>
-                <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                <li class="nav-item @if(request()->is('admin/transactions')) {{'active'}} @endif">
+                    <a href="/admin/transactions" class="nav-link">
                         <i class="feather-shopping-bag"></i> Transactions
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                <li class="nav-item @if(request()->is('admin/earnings')) {{'active'}} @endif">
+                    <a href="/admin/earnings" class="nav-link">
                         <i class="feather-pie-chart"></i> Earnings
                     </a>
                 </li>

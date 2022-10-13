@@ -36,14 +36,14 @@
                         <li>
                             <a href="/admin/users">Users</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#!">Verifications</a>
+                        </li> --}}
+                        <li>
+                            <a href="/admin/transactions">Transactions</a>
                         </li>
                         <li>
-                            <a href="#!">Transactions</a>
-                        </li>
-                        <li>
-                            <a href="#!">Earnings</a>
+                            <a href="/admin/earnings">Earnings</a>
                         </li>
                         <li>
                             <a href="#!">Withdrawals</a>

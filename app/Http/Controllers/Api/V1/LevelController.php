@@ -61,7 +61,7 @@ class LevelController extends Controller
     private function _validation(Request $request){
         return $this->validate($request, [
             'number' => 'required|numeric|max:200000000',
-            'roman' => 'required|max:255'
+            'name' => 'required|max:255'
         ]);
     }
 }

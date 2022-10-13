@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\EarningController;
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\VerificationController;
@@ -71,7 +73,10 @@ Route::prefix('admin')->group(function(){
         Route::resource('users', UserController::class);
         Route::resource('courses', CourseController::class);
         Route::resource('levels', LevelController::class);
+        Route::resource('transactions', TransactionController::class);
         // Route::resource('skills', SkillController::class);
+
+        Route::get('earnings', [EarningController::class, 'index']);
     
         // Route::post('payment', [TransactionController::class, 'payment']);
         // Route::resource('transactions', TransactionController::class);
