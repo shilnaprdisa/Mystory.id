@@ -1,6 +1,6 @@
 @extends('layout.master')
 @push('title')
-<title>Belajarin.Id - Transactions</title>
+<title>Belajarin.Id - Withdrawals</title>
 @endpush
 @push('css')
 <!-- Feather CSS -->
@@ -30,8 +30,8 @@
                         <div class="settings-widget">
                             <div class="settings-inner-blk p-0">
                                 <div class="sell-course-head comman-space">
-                                    <h3>Transactions</h3>
-                                    {{-- <p>Manage your transactions and its update like live, draft and insight.</p> --}}
+                                    <h3>Withdrawals</h3>
+                                    {{-- <p>Manage your withdrawals and its update like live, draft and insight.</p> --}}
                                 </div>
                                 <div class="comman-space pb-0">
                                     <div class="instruct-search-blk">
@@ -45,10 +45,10 @@
                                                                 placeholder="Search our courses">
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-6 col-lg-6 col-item text-end">
+                                                    <div class="col-6 col-lg-6 col-item text-end">
                                                         <a href="#!"
                                                             class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLevelModal">New Class</a>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -59,74 +59,66 @@
                                         <table class="table table-nowrap mb-2">
                                             <thead>
                                                 <tr>
-                                                    <th>STUDENT</th>
-                                                    <th>TENTOR</th>
-                                                    <th>COURSE</th>
-                                                    <th>CLASS</th>
-                                                    <th>TIME</th>
-                                                    <th>TOTAL PRICE</th>
+                                                    <th>NAME</th>
+                                                    <th>AMOUNT</th>
+                                                    <th>WD FEE</th>
+                                                    <th>RECEIVED</th>
                                                     <th>STATUS</th>
+                                                    <th>CREATED AT</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($transactions as $transaction)
+                                                @foreach ($wd as $w)
                                                     <tr>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->user->name}}</a></p>
+                                                                    <p><a href="#!">{{$w->user->name}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->skill->user->name}}</a></p>
+                                                                    <p><a href="#!">{{$w->amount}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->course}}</a></p>
+                                                                    <p><a href="#!">{{$w->wd_fee}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->level}}</a></p>
+                                                                    <p><a href="#!">{{$w->received}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->time}} Hours</a></p>
+                                                                    <p><a href="#!">{{$w->status}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{rupiah($transaction->total_price)}}</a></p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="sell-table-group d-flex align-items-center">
-                                                                <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->status}}</a></p>
+                                                                    <p><a href="#!">{{date('d M Y', strtotime($w->created_at))}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
                                                                 <button type="button"
-                                                                    class="btn btn-sm btn-success">View</button>
+                                                                    class="btn btn-sm btn-success">Edit</button>
                                                                 <button type="button"
-                                                                    class="btn btn-sm btn-dark">Edit</button>
+                                                                    class="btn btn-sm btn-danger">Delete</button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -140,42 +132,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- /pagination -->
-                    @if ($transactions->lastPage() > 1)
-                        @php
-                            $currentPage = $transactions->currentPage();
-                            $prevous = $currentPage - 1;
-                            $next = $currentPage + 1;
-                        @endphp
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="pagination lms-page mt-0">
-                                    <li class="page-item prev">
-                                        <form action="" method="get">
-                                            <input type="hidden" name="page" value="{{$prevous}}">
-                                            <button type="submit" @if($currentPage <= 1) disabled @endif class="page-link" tabindex="-1"><i class="fas fa-angle-left"></i></button>
-                                        </form>
-                                    </li>
-                                    @for ($i = 1; $i <= $transactions->lastPage(); $i++)
-                                        <li class="page-item @if($currentPage == $i) first-page active @endif">
-                                            <form action="" method="get">
-                                                <input type="hidden" name="page" value="{{$i}}">
-                                                <button type="submit" class="page-link">{{$i}}</button>
-                                            </form>
-                                        </li>
-                                    @endfor
-                                    <li class="page-item next">
-                                        <form action="" method="get">
-                                            <input type="hidden" name="page" value="{{$next}}">
-                                            <button type="submit" @if($currentPage >= $transactions->lastPage()) disabled @endif class="page-link"><i class="fas fa-angle-right"></i></button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                        
-                    @endif
-                    <!-- /pagination -->
                 </div>
             </div>
             <!-- /Instructor Dashboard -->
@@ -185,7 +141,7 @@
 </div>
 
 <!-- Modal -->
-{{-- <div class="modal fade" id="addLevelModal" tabindex="-1" aria-labelledby="addLevelModalLabel" aria-hidden="true">
+<div class="modal fade" id="addLevelModal" tabindex="-1" aria-labelledby="addLevelModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -210,7 +166,7 @@
             </form>
         </div>
     </div>
-</div> --}}
+</div>
 
 @endpush
 

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->bigInteger('wd_fee')->default(0);
             $table->bigInteger('received')->default(0);
             $table->enum('status', ['Pending', 'Success']);
+            $table->string('account_number');
+            $table->string('account_name');
             $table->timestamps();
         });
     }

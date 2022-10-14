@@ -1,7 +1,7 @@
 <?php
 
 function rupiah($amount){
-    return 'Rp. '.number_format($amount, 0, ',', '.');
+    return 'Rp '.number_format($amount, 0, ',', '.');
 }
 function angka($amount){
     return number_format($amount, 0, ',', '.');

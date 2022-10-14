@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\VerificationController;
+use App\Http\Controllers\Admin\WithdrawalController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,7 +75,7 @@ Route::prefix('admin')->group(function(){
         Route::resource('courses', CourseController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('transactions', TransactionController::class);
-        // Route::resource('skills', SkillController::class);
+        Route::resource('withdrawals', WithdrawalController::class);
 
         Route::get('earnings', [EarningController::class, 'index']);
     

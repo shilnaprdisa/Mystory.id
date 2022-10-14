@@ -46,14 +46,14 @@
                             <a href="/admin/earnings">Earnings</a>
                         </li>
                         <li>
-                            <a href="#!">Withdrawals</a>
+                            <a href="/admin/withdrawals">Withdrawals</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#!">Reviews</a>
                         </li>
                         <li>
                             <a href="#!">Notifications</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <ul class="nav header-navbar-rht">

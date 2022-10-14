@@ -38,12 +38,12 @@
                         <i class="feather-pie-chart"></i> Earnings
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#!" class="nav-link">
+                <li class="nav-item @if(request()->is('admin/withdrawals')) {{'active'}} @endif">
+                    <a href="/admin/withdrawals" class="nav-link">
                         <i class="feather-dollar-sign"></i> Withdrawals
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#!" class="nav-link">
                         <i class="feather-star"></i> Reviews
                     </a>
@@ -52,7 +52,7 @@
                     <a href="#!" class="nav-link">
                         <i class="feather-bell"></i> Notifications
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
