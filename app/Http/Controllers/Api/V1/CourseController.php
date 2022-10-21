@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\V1\CourseCollection;
 use App\Http\Resources\Api\V1\CourseResource;
 use App\Models\Course;
-use App\Models\Skill;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,6 +22,20 @@ class CourseController extends Controller
 
     public function store(Request $request){
         $this->_validation($request);
+        $checkCourse = Course::where(['user_id' => $request->user_id, 'lesson_id' => $request->lesson_id, 'level_id' => $request->level_id])->first();
+        if($checkCourse && $checkCourse->status != 'Deleted'){
+            return response()->json([
+                'message' => 'Failed!, Data already use.',
+                'status_code' => 500,
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }elseif($checkCourse && $checkCourse->status == 'Deleted'){
+            $checkCourse->update(['status' => 'Enabled', 'price' => $request->price]);
+            return response()->json([
+                'message' => 'Success',
+                'status_code' => 201,
+                'data' => new CourseResource($checkCourse),
+            ], Response::HTTP_CREATED);
+        }
         $course = Course::create($request->all());
         return response()->json([
             'message' => 'Success',
@@ -42,25 +55,21 @@ class CourseController extends Controller
         ], Response::HTTP_OK);  
     }
 
-    public function destroy($id){
+    public function destroy(Request $request, $id){
         $course = Course::find($id);
-        $skill = Skill::where('course_id', $id)->first();
-        if($skill){
-            return response()->json([
-                'message' => 'Failed, Course is used',
-                'status_code' => 500,
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-        $course->delete();
+        $course->update(['status' => $request->status]);
         return response()->json([
-            'message' => 'Success',
+            'message' => 'Success, Data Successfully '.$request->status,
             'status_code' => 200,
         ], Response::HTTP_OK);
     }
 
     private function _validation(Request $request){
         return $this->validate($request, [
-            'name' => 'required|max:255'
+            'user_id' => 'required|numeric|max:200000000',
+            'lesson_id' => 'required|numeric|max:200000000',
+            'level_id' => 'required|numeric|max:200000000',
+            'price' => 'required|numeric|max:200000000',
         ]);
     }
 }

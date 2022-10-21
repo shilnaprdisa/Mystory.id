@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('lesson_id')->constrained('lessons');
+            $table->foreignId('level_id')->constrained('levels');
+            $table->enum('status', ['Enabled', 'Disabled', 'Deleted']);
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

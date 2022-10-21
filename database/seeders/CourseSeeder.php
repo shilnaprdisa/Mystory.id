@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Lesson;
+use App\Models\Level;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +18,21 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        Course::create([
-            'name' => 'Matematika'
-        ]);
-        Course::create([
-            'name' => 'IPA'
-        ]);
+        $users = User::where('role', 'Tentor')->get();
+        $lessons = Lesson::all();
+        $levels = Level::all();
+        foreach($users as $user){
+            foreach($lessons as $lesson){
+                foreach($levels as $level){
+                    Course::create([
+                        'user_id' => $user->id,
+                        'lesson_id' => $lesson->id,
+                        'level_id' => $level->id,
+                        'status' => 'Enabled',
+                        'price' => rand(1,9).'0000',
+                    ]);
+                }
+            }
+        }
     }
 }

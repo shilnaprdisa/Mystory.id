@@ -61,7 +61,7 @@
                                                 <tr>
                                                     <th>STUDENT</th>
                                                     <th>TENTOR</th>
-                                                    <th>COURSE</th>
+                                                    <th>LESSON</th>
                                                     <th>CLASS</th>
                                                     <th>TIME</th>
                                                     <th>TOTAL PRICE</th>
@@ -82,14 +82,14 @@
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->skill->user->name}}</a></p>
+                                                                    <p><a href="#!">{{$transaction->course->user->name}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$transaction->course}}</a></p>
+                                                                    <p><a href="#!">{{$transaction->lesson}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>

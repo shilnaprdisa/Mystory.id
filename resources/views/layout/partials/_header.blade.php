@@ -28,7 +28,7 @@
                             <a href="/admin">Dashboard</a>
                         </li>
                         <li>
-                            <a href="/admin/courses">Courses</a>
+                            <a href="/admin/lessons">Lessons</a>
                         </li>
                         <li>
                             <a href="/admin/levels">Classes</a>

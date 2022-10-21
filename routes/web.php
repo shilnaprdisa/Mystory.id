@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\EarningController;
+use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
@@ -72,7 +73,7 @@ Route::prefix('admin')->group(function(){
         // Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
     
         Route::resource('users', UserController::class);
-        Route::resource('courses', CourseController::class);
+        Route::resource('lessons', LessonController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('transactions', TransactionController::class);
         Route::resource('withdrawals', WithdrawalController::class);

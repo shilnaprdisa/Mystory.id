@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('skill_id')->constrained('skills');
-            $table->string('course');
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('lesson');
             $table->string('level');
             $table->bigInteger('price');
             $table->integer('time');

@@ -18,8 +18,8 @@ class EarningController extends Controller
         $students = User::whereYear('created_at', date('Y'))->whereRole('Student')->count();
         $tentors = User::whereYear('created_at', date('Y'))->whereRole('Tentor')->count();
         $best_sales = DB::table('transactions')
-            ->select('course', DB::raw('count(*) as total_sales'),DB::raw('sum(price) as total_price'))
-            ->groupBy('course')
+            ->select('lesson', DB::raw('count(*) as total_sales'),DB::raw('sum(price) as total_price'))
+            ->groupBy('lesson')
             ->orderBy('total_price', 'desc')
             ->get();
         return view('admin.earning.index', compact('income','tentors_income','revenue', 'students', 'tentors', 'best_sales'));

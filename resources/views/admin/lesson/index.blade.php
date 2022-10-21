@@ -1,6 +1,6 @@
 @extends('layout.master')
 @push('title')
-<title>Belajarin.Id - Courses</title>
+<title>Belajarin.Id - Lessons</title>
 @endpush
 @push('css')
 <!-- Feather CSS -->
@@ -30,8 +30,8 @@
                         <div class="settings-widget">
                             <div class="settings-inner-blk p-0">
                                 <div class="sell-course-head comman-space">
-                                    <h3>Courses</h3>
-                                    {{-- <p>Manage your courses and its update like live, draft and insight.</p> --}}
+                                    <h3>Lessons</h3>
+                                    {{-- <p>Manage your lessons and its update like live, draft and insight.</p> --}}
                                 </div>
                                 <div class="comman-space pb-0">
                                     <div class="instruct-search-blk">
@@ -47,7 +47,7 @@
                                                     </div>
                                                     <div class="col-6 col-lg-6 col-item text-end">
                                                         <a href="#!"
-                                                            class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal">New Course</a>
+                                                            class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLessonModal">New Lesson</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -59,22 +59,22 @@
                                         <table class="table table-nowrap mb-2">
                                             <thead>
                                                 <tr>
-                                                    <th>COURSES</th>
+                                                    <th>LESSONS</th>
                                                     <th>USED</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($courses as $course)
+                                                @foreach ($lessons as $lesson)
                                                     <tr>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$course->name}}</a></p>
+                                                                    <p><a href="#!">{{$lesson->name}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td>{{$course->skills->count()}}</td>
+                                                        <td>{{$lesson->courses->count()}}</td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
                                                                 <button type="button"
@@ -103,19 +103,19 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+<div class="modal fade" id="addLessonModal" tabindex="-1" aria-labelledby="addLessonModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCourseModalLabel">Add New Course</h5>
+                <h5 class="modal-title" id="addLessonModalLabel">Add New Lesson</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/courses" method="post">
+            <form action="/admin/lessons" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="form-control-label">Course Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter course name">
+                        <label class="form-control-label">Lesson Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter lesson name">
                     </div>
                 </div>
                 <div class="modal-footer">

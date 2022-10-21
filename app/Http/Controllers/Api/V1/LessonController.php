@@ -3,55 +3,55 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\V1\LevelCollection;
-use App\Http\Resources\Api\V1\LevelResource;
+use App\Http\Resources\Api\V1\LessonCollection;
+use App\Http\Resources\Api\V1\LessonResource;
 use App\Models\Course;
-use App\Models\Level;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LevelController extends Controller
+class LessonController extends Controller
 {
     public function index(){
-        $levels = Level::paginate(10);
+        $lessons = Lesson::paginate(10);
         return response()->json([
             'message' => 'Success',
             'status_code' => 200,
-            'data' => new LevelCollection($levels),
+            'data' => new LessonCollection($lessons),
         ], Response::HTTP_OK);
     }
 
     public function store(Request $request){
         $this->_validation($request);
-        $level = Level::create($request->all());
+        $lesson = Lesson::create($request->all());
         return response()->json([
             'message' => 'Success',
             'status_code' => 201,
-            'data' => new LevelResource($level),
+            'data' => new LessonResource($lesson),
         ], Response::HTTP_CREATED);
     }
 
     public function update(Request $request, $id){
         $this->_validation($request);
-        $level = Level::find($id);
-        $level->update($request->all());
+        $lesson = Lesson::find($id);
+        $lesson->update($request->all());
         return response()->json([
             'message' => 'Success',
             'status_code' => 200,
-            'data' => new LevelResource($level),
+            'data' => new LessonResource($lesson),
         ], Response::HTTP_OK);  
     }
 
     public function destroy($id){
-        $level = Level::find($id);
-        $course = Course::where('level_id', $id)->first();
+        $lesson = Lesson::find($id);
+        $course = Course::where('lesson_id', $id)->first();
         if($course){
             return response()->json([
-                'message' => 'Failed, Level is used',
+                'message' => 'Failed, Lesson is used',
                 'status_code' => 500,
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        $level->delete();
+        $lesson->delete();
         return response()->json([
             'message' => 'Success',
             'status_code' => 200,
@@ -60,7 +60,6 @@ class LevelController extends Controller
 
     private function _validation(Request $request){
         return $this->validate($request, [
-            'number' => 'required|numeric|max:200000000',
             'name' => 'required|max:255'
         ]);
     }

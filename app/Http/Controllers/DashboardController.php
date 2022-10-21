@@ -15,7 +15,7 @@ class DashboardController extends Controller
         return '<h2>halaman dashboard student sedang dalam pengembangan </h2>';
     }
     public function tentor(){
-        return '<h2>halaman dashboard tentor sedang dalam pengembangan </h2>';
+        return view('tentor.dashboard.index');
     }
     public function admin(){
         $transactions = Transaction::whereStatus('Paid')->whereYear('created_at', date('Y'))->count();
@@ -23,8 +23,8 @@ class DashboardController extends Controller
         $tentors = User::whereYear('created_at', date('Y'))->whereRole('Tentor')->count();
         $best_sales = DB::table('transactions')
             ->whereStatus('Paid')
-            ->select('course', DB::raw('count(*) as total_sales'),DB::raw('sum(price) as total_price'))
-            ->groupBy('course')
+            ->select('lesson', DB::raw('count(*) as total_sales'),DB::raw('sum(price) as total_price'))
+            ->groupBy('lesson')
             ->orderBy('total_price', 'desc')
             ->get();
         return view('admin.dashboard.index', compact('transactions', 'students', 'tentors', 'best_sales'));

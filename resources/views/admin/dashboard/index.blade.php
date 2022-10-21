@@ -69,7 +69,7 @@
                         <div class="settings-widget">
                             <div class="settings-inner-blk p-0">
                                 <div class="sell-course-head comman-space">
-                                    <h3>Best Selling Courses</h3>
+                                    <h3>Best Selling</h3>
                                 </div>
                                 <div class="comman-space pb-0">
                                     <div class="settings-tickets-blk course-instruct-blk table-responsive">
@@ -78,7 +78,7 @@
                                         <table class="table table-nowrap mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>COURSES</th>
+                                                    <th>LESSON</th>
                                                     <th>SALES</th>
                                                     <th>AMOUNT</th>
                                                 </tr>
@@ -96,7 +96,7 @@
                                                                 </div> --}}
                                                                 <div class="sell-tabel-info">
                                                                     </p>
-                                                                    <p><a href="#!">{{$sales->course}}</a>
+                                                                    <p><a href="#!">{{$sales->lesson}}</a>
                                                                 </div>
                                                             </div>
                                                         </td>

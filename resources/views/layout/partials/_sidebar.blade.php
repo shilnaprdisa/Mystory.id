@@ -8,9 +8,9 @@
                         <i class="feather-home"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-item @if(request()->is('admin/courses')) {{'active'}} @endif">
-                    <a href="/admin/courses" class="nav-link">
-                        <i class="feather-book"></i> Courses
+                <li class="nav-item @if(request()->is('admin/lessons')) {{'active'}} @endif">
+                    <a href="/admin/lessons" class="nav-link">
+                        <i class="feather-book"></i> Lessons
                     </a>
                 </li>
                 <li class="nav-item @if(request()->is('admin/levels')) {{'active'}} @endif">

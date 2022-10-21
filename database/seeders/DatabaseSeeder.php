@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SettingSeeder::class,
-            CourseSeeder::class,
+            LessonSeeder::class,
             LevelSeeder::class,
             UserSeeder::class,
             AddressSeeder::class,
-            SkillSeeder::class,
+            CourseSeeder::class,
             TransactionSeeder::class,
             NotificationSeeder::class,
             ReviewSeeder::class,

@@ -20,11 +20,11 @@ class EarningSeeder extends Seeder
         foreach($transactions as $transaction){
             $amount = $transaction->price * $transaction->time;
             Earning::create([
-                'user_id' => $transaction->skill->user->id,
+                'user_id' => $transaction->course->user->id,
                 'transaction_id' => $transaction->id,
                 'amount' => $amount,
             ]);
-            $transaction->skill->user->update(['balance' => $transaction->skill->user->balance + $amount]);
+            $transaction->course->user->update(['balance' => $transaction->course->user->balance + $amount]);
         }
     }
 }

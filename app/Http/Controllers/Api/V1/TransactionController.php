@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\V1\TransactionCollection;
 use App\Http\Resources\Api\V1\TransactionResource;
+use App\Models\Course;
 use App\Models\Earning;
 use App\Models\Notification;
 use App\Models\Setting;
-use App\Models\Skill;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -120,11 +120,11 @@ class TransactionController extends Controller
             if($transaction->status == 'Paid'){
                 $amount = $transaction->price * $transaction->time;
                 Earning::create([
-                    'user_id' => $transaction->skill->user->id,
+                    'user_id' => $transaction->course->user->id,
                     'transaction_id' => $transaction->id,
                     'amount' => $amount,
                 ]);
-                $transaction->skill->user->update(['balance' => $transaction->skill->user->balance + $amount]);
+                $transaction->course->user->update(['balance' => $transaction->course->user->balance + $amount]);
             }
 
         }else{
@@ -135,13 +135,13 @@ class TransactionController extends Controller
     private function _trasactionRequest(Request $request, $status){
         $this->_validation($request);
         $user = User::find($request->user_id);
-        $skill = Skill::find($request->skill_id);
+        $course = Course::find($request->course_id);
         $setting_fee = Setting::where('name', 'AdminFee')->first();
-        $sub_total = $request->time * $skill->price;
+        $sub_total = $request->time * $course->price;
         $admin_fee = ($setting_fee->type == 'Persen') ? $sub_total * $setting_fee->value / 100 : $setting_fee->value ;
         $request->request->add([
-            'user_id' => $user->id,'skill_id' => $request->skill_id, 'course' => $skill->course->name,
-            'level' => $skill->level->name, 'price' => $skill->price,
+            'user_id' => $user->id,'course_id' => $request->course_id, 'course' => $course->course->name,
+            'level' => $course->level->name, 'price' => $course->price,
             'time' => $request->time, 'admin_fee' => $admin_fee, 'total_price' => $sub_total + $admin_fee,
             'status' => $status
         ]);
@@ -151,7 +151,7 @@ class TransactionController extends Controller
     private function _validation(Request $request){
         return $this->validate($request, [
             'user_id' => 'required|numeric|max:200000000',
-            'skill_id' => 'required|numeric|max:200000000',
+            'course_id' => 'required|numeric|max:200000000',
             'time' => 'required|numeric|max:200000000',
         ]);
     }
@@ -232,7 +232,7 @@ class TransactionController extends Controller
         $uritentor = '/tentor/transactions/'.$transactions->id;
         
         if($transactions->status == 'Order'){
-            $user_id = $transactions->skill->user->id;
+            $user_id = $transactions->course->user->id;
             $title = "Pesanan Baru";
             $description = "Ada pesanan baru dari $name,segera terima untuk membuat kesepakatan!";
             $status = 'Sended';
@@ -245,7 +245,7 @@ class TransactionController extends Controller
             $status = 'Sended';
             $type = 'Agree';
         }elseif($transactions->status == 'Come'){
-            $user_id = $transactions->skill->user->id;
+            $user_id = $transactions->course->user->id;
             $title = "Pelanggan Memanggil";
             $description = "Pelanggan dengan atas nama $name mengharapkan anda untuk datang ke lokasi, bersegeralah!";
             $status = 'Sended';
@@ -271,7 +271,7 @@ class TransactionController extends Controller
             $status = 'Sended';
             $type = 'Paid';
             $notification = Notification::create([
-                'user_id' => $transactions->skill->user->id, 'title' => $title, 'description' => "$name berhasil melakukan pembayaran, mintalah untuk memberikan review terbaik!",
+                'user_id' => $transactions->course->user->id, 'title' => $title, 'description' => "$name berhasil melakukan pembayaran, mintalah untuk memberikan review terbaik!",
                 'status' => $status, 'type' => 'Paid', 'uri' => $uritentor
             ]);
         }elseif($transactions->status == 'PaymentFailed'){
@@ -295,7 +295,7 @@ class TransactionController extends Controller
             $status = 'Sended';
             $type = 'Cancel';
             $notification = Notification::create([
-                'user_id' => $transactions->skill->user->id, 'title' => $title, 'description' => "Pesanan dengan ID $id dibatalkan.",
+                'user_id' => $transactions->course->user->id, 'title' => $title, 'description' => "Pesanan dengan ID $id dibatalkan.",
                 'status' => $status, 'type' => $type, 'uri' => $uritentor
             ]);
         }else{ //review

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CourseController;
+use App\Http\Controllers\Api\V1\LessonController;
 use App\Http\Controllers\Api\V1\LevelController;
 use App\Http\Controllers\Api\V1\SkillController;
 use App\Http\Controllers\Api\V1\TransactionController;
@@ -53,9 +54,9 @@ Route::prefix('v1')->group(function(){
             Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
 
             Route::resource('users', UserController::class);
-            Route::resource('courses', CourseController::class);
+            Route::resource('lessons', LessonController::class);
             Route::resource('levels', LevelController::class);
-            Route::resource('skills', SkillController::class);
+            Route::resource('courses', CourseController::class);
 
             Route::post('payment', [TransactionController::class, 'payment']);
             Route::resource('transactions', TransactionController::class);

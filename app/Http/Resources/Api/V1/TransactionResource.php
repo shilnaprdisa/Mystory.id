@@ -17,8 +17,8 @@ class TransactionResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'skill_id' => $this->skill_id,
-            'course' => $this->course,
+            'course_id' => $this->course_id,
+            'lesson' => $this->lesson,
             'level' => $this->level,
             'roman' => $this->roman,
             'price' => $this->price,
@@ -29,8 +29,8 @@ class TransactionResource extends JsonResource
             'payment_code' => $this->payment_code,
             'customer_name' => $this->user->name,
             'customer_phone' => $this->user->country_code.$this->user->phone,
-            'tentor_name' => $this->skill->user->name,
-            'tentor_phone' => $this->skill->user->country_code.$this->skill->user->phone,
+            'tentor_name' => $this->course->user->name,
+            'tentor_phone' => $this->course->user->country_code.$this->course->user->phone,
             'created_at' => $this->created_at
         ];
     }

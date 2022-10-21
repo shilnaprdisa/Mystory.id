@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class SkillCollection extends ResourceCollection
+class LessonCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,6 @@ class SkillCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->collection->transform(fn($skill) => new SkillResource($skill))->toArray();
+        return $this->collection->transform(fn($lesson) => new LessonResource($lesson))->toArray();
     }
 }
