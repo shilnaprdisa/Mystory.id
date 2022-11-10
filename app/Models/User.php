@@ -30,6 +30,7 @@ class User extends Authenticatable
         'status',
         'gender',
         'rating_score',
+        'balance',
         'is_online',
         'is_verified',
         'password',
@@ -61,8 +62,8 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function skills(){
-        return $this->hasMany(Skill::class);
+    public function courses(){
+        return $this->hasMany(Course::class);
     }
     public function notifications(){
         return $this->hasMany(Notification::class);

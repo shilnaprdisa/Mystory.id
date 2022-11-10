@@ -20,7 +20,7 @@ class AuthController extends Controller
                 'status_code' => 400,
             ], Response::HTTP_BAD_REQUEST);
         }
-        $request['phone'] = $this->_formatPhone($request->phone);
+        $request['phone'] = formatPhone($request->phone);
         $request['status'] = 'Pending';
         $user = User::create($request->all());
         $request->request->add(['user_id' => $user->id]);
@@ -59,39 +59,6 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Logout Success!',
         ], Response::HTTP_OK);
-    }
-
-    private function _formatPhone($phone){
-        // kadang ada penulisan no hp 0811 239 345
-        $phone = str_replace(" ","",$phone);
-        // kadang ada penulisan no hp (0274) 778787
-        $phone = str_replace("(","",$phone);
-        // kadang ada penulisan no hp (0274) 778787
-        $phone = str_replace(")","",$phone);
-        // kadang ada penulisan no hp 0811.239.345
-        $phone = str_replace(".","",$phone);
-
-        $hp = $phone;
-    
-        // cek apakah no hp mengandung karakter + dan 0-9
-        if(!preg_match('/[^+0-9]/',trim($phone))){
-            // cek apakah no hp karakter 1-3 adalah +62
-            if(substr(trim($phone), 0, 3)=='+62'){
-                // $hp = trim($phone);
-                $hp = substr(trim($phone), 3);
-            }
-            // cek apakah no hp karakter 1-2 adalah 62
-            elseif(substr(trim($phone), 0, 2)=='62'){
-                // $hp = '+62'.substr(trim($phone), 1);
-                $hp = substr(trim($phone), 2);
-            }
-            // cek apakah no hp karakter 1 adalah 0
-            elseif(substr(trim($phone), 0, 1)=='0'){
-                // $hp = '+62'.substr(trim($phone), 1);
-                $hp = substr(trim($phone), 1);
-            }
-        }
-        return $hp;
     }
 
     private function _validation(Request $request){

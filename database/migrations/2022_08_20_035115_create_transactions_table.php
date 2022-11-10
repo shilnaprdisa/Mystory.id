@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('level');
             $table->bigInteger('price');
             $table->integer('time');
-            $table->bigInteger('admin_fee');
+            $table->bigInteger('trans_fee');
             $table->bigInteger('total_price');
             $table->enum('status', ['Order', 'Agree', 'Come', 'Process', 'Done', 'PaymentFailed', 'Paid', 'Cancel']);
             $table->string('payment_code')->nullable();

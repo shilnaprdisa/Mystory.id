@@ -2,10 +2,6 @@
 @push('title')
 <title>Belajarin.Id - Dashboard</title>
 @endpush
-@push('css')
-<!-- Feather CSS -->
-<link rel="stylesheet" href="{{asset('assets/css/feather.css')}}">    
-@endpush
 @push('content')
 <div class="page-content instructor-page-content">
     <div class="container">
@@ -124,9 +120,6 @@
 @endpush
 
 @push('js')
-<!-- Feature JS -->
-<script src="{{asset('assets/plugins/feather/feather.min.js')}}"></script>
-
 <!-- Chart JS -->
 <script src="{{asset('assets/plugins/apexchart/apexcharts.min.js')}}"></script>
 <script src="{{asset('assets/plugins/apexchart/chart-data.js')}}"></script>    

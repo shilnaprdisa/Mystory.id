@@ -24,36 +24,59 @@
                         </a>
                     </div>
                     <ul class="main-nav">
-                        <li>
-                            <a href="/admin">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="/admin/lessons">Lessons</a>
-                        </li>
-                        <li>
-                            <a href="/admin/levels">Classes</a>
-                        </li>
-                        <li>
-                            <a href="/admin/users">Users</a>
-                        </li>
-                        {{-- <li>
-                            <a href="#!">Verifications</a>
-                        </li> --}}
-                        <li>
-                            <a href="/admin/transactions">Transactions</a>
-                        </li>
-                        <li>
-                            <a href="/admin/earnings">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="/admin/withdrawals">Withdrawals</a>
-                        </li>
-                        {{-- <li>
-                            <a href="#!">Reviews</a>
-                        </li>
-                        <li>
-                            <a href="#!">Notifications</a>
-                        </li> --}}
+                        @if (auth()->user()->role == 'Customer')
+                            
+                        @elseif(auth()->user()->role == 'Tentor')
+                            <li>
+                                <a href="/tentor" @if(request()->is('tentor')) style='color: #392C7D; font-weight: bold;'@endif>Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="/tentor/courses" @if(request()->is('tentor/courses') or request()->is('tentor/courses/*')) style='color: #392C7D; font-weight: bold;'@endif>Courses</a>
+                            </li>
+                            <li>
+                                <a href="/tentor/transactions" @if(request()->is('tentor/transactions')) style='color: #392C7D; font-weight: bold;'@endif>Transactions</a>
+                            </li>
+                            <li>
+                                <a href="/tentor/reviews" @if(request()->is('tentor/reviews')) style='color: #392C7D; font-weight: bold;'@endif>Reviews</a>
+                            </li>
+                            <li>
+                                <a href="/tentor/earnings" @if(request()->is('tentor/earnings')) style='color: #392C7D; font-weight: bold;'@endif>Earnings</a>
+                            </li>
+                            <li>
+                                <a href="/tentor/withdrawals" @if(request()->is('tentor/withdrawals')) style='color: #392C7D; font-weight: bold;'@endif>Withdrawals</a>
+                            </li>
+                        @else                            
+                            <li class="hide">
+                                <a href="/admin">Dashboard</a>
+                            </li>
+                            <li class="hide">
+                                <a href="/admin/lessons">Lessons</a>
+                            </li>
+                            <li class="hide">
+                                <a href="/admin/levels">Classes</a>
+                            </li>
+                            <li class="hide">
+                                <a href="/admin/users">Users</a>
+                            </li>
+                            {{-- <li>
+                                <a href="#!">Verifications</a>
+                            </li> --}}
+                            <li class="hide">
+                                <a href="/admin/transactions">Transactions</a>
+                            </li>
+                            <li class="hide">
+                                <a href="/admin/earnings">Earnings</a>
+                            </li>
+                            <li class="hide">
+                                <a href="/admin/withdrawals">Withdrawals</a>
+                            </li>
+                            {{-- <li>
+                                <a href="#!">Reviews</a>
+                            </li>
+                            <li>
+                                <a href="#!">Notifications</a>
+                            </li> --}}
+                        @endif
                     </ul>
                 </div>
                 <ul class="nav header-navbar-rht">
@@ -304,11 +327,11 @@
                                     <p class="text-muted mb-0">{{auth()->user()->role}}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="/admin"><i class="feather-home me-1"></i>
+                            <a class="dropdown-item" href="{{(auth()->user()->role == 'Customer') ? '/dashboard' : (auth()->user()->role == 'Tentor' ? '/tentor' : '/admin')}}"><i class="feather-home me-1"></i>
                                 Dashboard</a>
-                            <a class="dropdown-item" href="#!"><i
+                            <a class="dropdown-item" href="/profile"><i
                                     class="feather-user me-1"></i> Edit Profile</a>
-                            <a class="dropdown-item" href="#!"><i
+                            <a class="dropdown-item" href="/setting"><i
                                     class="feather-settings me-1"></i> Settings</a>
                             
                             <a class="dropdown-item" href="/logout"><i class="feather-log-out me-1"></i> Logout</a>

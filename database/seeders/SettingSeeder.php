@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         Setting::create([
-            'name' => 'AdminFee',
+            'name' => 'TransFee',
             'value' => 2,
             'type' => 'Persen'
         ]);

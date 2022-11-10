@@ -129,12 +129,8 @@
                             <div class="form-group">
                                 <label class="form-control-label">Konfirmasi Password <span
                                         class="text-danger">*</span></label>
-                                <div class="pass-group">
-                                    <input type="password" id="confirmPassword" class="form-control pass-input"
-                                        placeholder="Konfirmasi password">
-                                    <span class="toggle-password feather-eye"></span>
-                                    <span class="pass-checked"><i class="feather-check"></i></span>
-                                </div>
+                                        <input type="password" id="confirmPassword" class="form-control pass-input"
+                                            placeholder="Konfirmasi password">
                                 <span class="invalid-text" id="errorConfirmPassword"></span>
                             </div>
 

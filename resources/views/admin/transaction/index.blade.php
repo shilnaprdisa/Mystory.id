@@ -3,9 +3,6 @@
 <title>Belajarin.Id - Transactions</title>
 @endpush
 @push('css')
-<!-- Feather CSS -->
-<link rel="stylesheet" href="{{asset('assets/css/feather.css')}}">
-
 <!-- Select2 CSS -->
 <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 @endpush
@@ -217,6 +214,4 @@
 @push('js')
 <!-- Select2 JS -->
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-<!-- Feature JS -->
-<script src="{{asset('assets/plugins/feather/feather.min.js')}}"></script>
 @endpush

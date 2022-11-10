@@ -809,12 +809,14 @@ button.bg-danger:hover {
 	background-color: #FFF;
 }
 .main-nav {
-	/* display: -webkit-box;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	list-style: none;
 	margin: 0;
-	padding: 0; */
+	padding: 0;
+}
+.main-nav li.hide {
 	display: none;
 }
 .main-nav > li.active > a {
@@ -10080,6 +10082,9 @@ input[type=password]::-ms-clear
 		padding-left: 0;
 		margin-bottom: 0;
 		list-style: none;
+		display: block;
+	}
+	.main-nav li.hide {
 		display: block;
 	}
 	.main-nav ul {

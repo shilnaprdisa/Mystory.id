@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('status', ['Pending', 'Success']);
             $table->string('account_number');
             $table->string('account_name');
+            $table->string('bank_name');
             $table->timestamps();
         });
     }

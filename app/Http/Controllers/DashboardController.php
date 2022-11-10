@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Earning;
+use App\Models\Review;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,11 @@ class DashboardController extends Controller
         return '<h2>halaman dashboard student sedang dalam pengembangan </h2>';
     }
     public function tentor(){
-        return view('tentor.dashboard.index');
+        $transactions = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->whereStatus('Paid')->count();
+        $reviews = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->count();
+        $rating = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->sum('rating') / $reviews;
+        $last_trans = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->paginate(5);
+        return view('tentor.dashboard.index', compact('transactions', 'reviews', 'rating', 'last_trans'));
     }
     public function admin(){
         $transactions = Transaction::whereStatus('Paid')->whereYear('created_at', date('Y'))->count();

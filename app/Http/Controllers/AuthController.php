@@ -19,10 +19,10 @@ class AuthController extends Controller
     }
     
     public function login(Request $request){
-        if (!Auth::attempt($request->only('email', 'password')) && !Auth::attempt(['phone' => $this->_formatPhone($request->email), 'password' => $request->password]) && !Auth::attempt(['username' => $request->email, 'password' => $request->password])) {
+        if (!Auth::attempt($request->only('email', 'password')) && !Auth::attempt(['phone' => formatPhone($request->email), 'password' => $request->password]) && !Auth::attempt(['username' => $request->email, 'password' => $request->password])) {
             return redirect()->back()->with('failed', 'Email atau password salah.');
         }
-        $user = User::whereEmail($request->email)->first() ?? User::wherePhone($this->_formatPhone($request->email))->first() ?? User::whereUsername($request->email)->firstOrFail();
+        $user = User::whereEmail($request->email)->first() ?? User::wherePhone(formatPhone($request->email))->first() ?? User::whereUsername($request->email)->firstOrFail();
         if($user->status == 'Banned' or $user->status == 'Deleted'){
             return redirect('/suspend');
         }elseif($user->role == 'Student'){
@@ -34,7 +34,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-        $request['phone'] = $this->_formatPhone($request->phone);
+        $request['phone'] = formatPhone($request->phone);
         $this->_validation($request);
         if($request->role == 'Admin' or $request->role == 'Super'){
             return response()->json([
@@ -60,39 +60,6 @@ class AuthController extends Controller
             Auth::logout();
         }
         return view('auth.suspend');
-    }
-
-    private function _formatPhone($phone){
-        // kadang ada penulisan no hp 0811 239 345
-        $phone = str_replace(" ","",$phone);
-        // kadang ada penulisan no hp (0274) 778787
-        $phone = str_replace("(","",$phone);
-        // kadang ada penulisan no hp (0274) 778787
-        $phone = str_replace(")","",$phone);
-        // kadang ada penulisan no hp 0811.239.345
-        $phone = str_replace(".","",$phone);
-
-        $hp = $phone;
-    
-        // cek apakah no hp mengandung karakter + dan 0-9
-        if(!preg_match('/[^+0-9]/',trim($phone))){
-            // cek apakah no hp karakter 1-3 adalah +62
-            if(substr(trim($phone), 0, 3)=='+62'){
-                // $hp = trim($phone);
-                $hp = substr(trim($phone), 3);
-            }
-            // cek apakah no hp karakter 1-2 adalah 62
-            elseif(substr(trim($phone), 0, 2)=='62'){
-                // $hp = '+62'.substr(trim($phone), 1);
-                $hp = substr(trim($phone), 2);
-            }
-            // cek apakah no hp karakter 1 adalah 0
-            elseif(substr(trim($phone), 0, 1)=='0'){
-                // $hp = '+62'.substr(trim($phone), 1);
-                $hp = substr(trim($phone), 1);
-            }
-        }
-        return $hp;
     }
 
     private function _validation(Request $request){

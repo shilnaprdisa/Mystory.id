@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\AddressController;
-use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\EarningController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LevelController;
@@ -11,6 +10,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\Admin\WithdrawalController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\Tentor\CourseController;
+use App\Http\Controllers\Tentor\EarningController as TentorEarningController;
+use App\Http\Controllers\Tentor\ReviewController;
+use App\Http\Controllers\Tentor\TransactionController as TentorTransactionController;
+use App\Http\Controllers\Tentor\WithdrawalController as TentorWithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +55,10 @@ Route::group(['middleware' => ['auth', 'OtpVerification:Student,Tentor,Admin,Sup
     Route::post('/get-otp-register', [VerificationController::class, 'getOtpRegister']);
 });
 Route::group(['middleware' => ['auth', 'CheckRoles:Student,Tentor,Admin,Super']], function () {//all users
+    Route::get('/profile', [SettingController::class, 'profile']);
+    Route::post('/updateProfile', [SettingController::class, 'updateProfile']);
+    Route::get('/setting', [SettingController::class, 'index']);
+    Route::post('/updatePassword', [SettingController::class, 'updatePassword']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
@@ -60,6 +69,12 @@ Route::group(['middleware' => ['auth', 'CheckRoles:Student']], function () {
 Route::prefix('tentor')->group(function(){
     Route::group(['middleware' => ['auth', 'CheckRoles:Tentor']], function () {
         Route::get('', [DashboardController::class, 'tentor']);
+        Route::resource('courses', CourseController::class);
+        Route::resource('reviews', ReviewController::class);
+        Route::resource('transactions', TentorTransactionController::class);
+        Route::resource('earnings', TentorEarningController::class);
+        Route::resource('withdrawals', TentorWithdrawalController::class);
+        Route::get('wd-fee/{total}', [SettingController::class, 'wdFee']);
         // Route::post('get-otp-wd', [VerificationController::class, 'getOtpWD']);
         // Route::get('withdrawals/create', [WithdrawalController::class, 'create']);
         // Route::post('withdrawals', [WithdrawalController::class, 'store']);

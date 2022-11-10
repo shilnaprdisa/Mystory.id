@@ -21,11 +21,9 @@ class TransactionSeeder extends Seeder
         $courses = Course::all();
         $users = User::where('role', 'Student')->get();
         $time = rand(1,5);
-        $setting_fee = Setting::where('name', 'AdminFee')->first();
-        $cutting = ($setting_fee->type == 'Persen') ? $setting_fee->value / 100 : $setting_fee->value ;
 
         foreach($courses as $course){
-            $admin_fee = $course->price * $time * $cutting;
+            $trans_fee = transFee($course->price * $time);
             foreach($users as $user){
                 Transaction::create([
                     'user_id' => $user->id,
@@ -34,8 +32,8 @@ class TransactionSeeder extends Seeder
                     'level' => $course->level->name,
                     'price' => $course->price,
                     'time' => $time,
-                    'admin_fee' => $admin_fee,
-                    'total_price' => $course->price * $time + $admin_fee,
+                    'trans_fee' => $trans_fee,
+                    'total_price' => $course->price * $time + $trans_fee,
                     'status' => 'Paid',
                     'payment_code' => uniqid()
                 ]);

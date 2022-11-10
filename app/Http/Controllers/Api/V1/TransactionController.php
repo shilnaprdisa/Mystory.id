@@ -8,7 +8,6 @@ use App\Http\Resources\Api\V1\TransactionResource;
 use App\Models\Course;
 use App\Models\Earning;
 use App\Models\Notification;
-use App\Models\Setting;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -136,13 +135,12 @@ class TransactionController extends Controller
         $this->_validation($request);
         $user = User::find($request->user_id);
         $course = Course::find($request->course_id);
-        $setting_fee = Setting::where('name', 'AdminFee')->first();
         $sub_total = $request->time * $course->price;
-        $admin_fee = ($setting_fee->type == 'Persen') ? $sub_total * $setting_fee->value / 100 : $setting_fee->value ;
+        $trans_fee = transFee($sub_total);
         $request->request->add([
             'user_id' => $user->id,'course_id' => $request->course_id, 'course' => $course->course->name,
             'level' => $course->level->name, 'price' => $course->price,
-            'time' => $request->time, 'admin_fee' => $admin_fee, 'total_price' => $sub_total + $admin_fee,
+            'time' => $request->time, 'trans_fee' => $trans_fee, 'total_price' => $sub_total + $trans_fee,
             'status' => $status
         ]);
         return $request->all();

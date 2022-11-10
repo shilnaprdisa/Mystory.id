@@ -25,7 +25,6 @@ return new class extends Migration
             $table->enum('role', ['Super', 'Admin', 'Tentor', 'Student']);
             $table->enum('status', ['Pending', 'Active', 'Banned', 'Deleted']);
             $table->enum('gender', ['Male', 'Female']);
-            $table->bigInteger('rating_score')->default(0);
             $table->bigInteger('balance')->default(0);
             $table->boolean('is_online')->default(false);
             $table->boolean('is_verified')->default(false);

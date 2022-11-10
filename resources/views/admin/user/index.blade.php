@@ -3,9 +3,6 @@
 <title>Belajarin.Id - Classes</title>
 @endpush
 @push('css')
-<!-- Feather CSS -->
-<link rel="stylesheet" href="{{asset('assets/css/feather.css')}}">
-
 <!-- Select2 CSS -->
 <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 @endpush
@@ -77,7 +74,7 @@
                                             <li>
                                                 <div class="row">
                                                     <div class="col-9">
-                                                        Enrolled {{date('d M Y', strtotime($user->created_at))}}
+                                                        Enrolled {{tanggal($user->created_at)}}
                                                     </div>
                                                     <div class="col-2">
                                                         <span class="badge rounded-pill bg-{{($user->status == 'Active') ? 'primary' : ($user->status == 'Pending' ? 'warning' : ($user->status == 'Banned' ? 'dark' : 'danger'))}}">
@@ -171,6 +168,4 @@
 @push('js')
 <!-- Select2 JS -->
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-<!-- Feature JS -->
-<script src="{{asset('assets/plugins/feather/feather.min.js')}}"></script>
 @endpush

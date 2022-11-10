@@ -15,7 +15,7 @@ class LevelController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'number' => 'required|numeric|max:200000000|unique:levels',
+            'number' => 'required|numeric|max:200000000',
             'name' => 'required|max:255|unique:levels',
         ]);
         $levels = Level::create($request->all());
