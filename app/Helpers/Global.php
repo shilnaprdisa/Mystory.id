@@ -9,16 +9,16 @@ function tanggal($tanggal){
     return date('d M Y', strtotime($tanggal));
 }
 function tgltime($tanggal){
-    return date('d M Y - i:s', strtotime($tanggal));
+    return date('d M Y - H:i', strtotime($tanggal));
 }
 function angka($amount){
     return number_format($amount, 0, ',', '.');
 }
-function pagi($currentPage, $lastPage){
-    return view('layout.partials._paginate', compact('currentPage', 'lastPage'));
+function pagi($currentPage, $lastPage, $params = []){
+    return view('layout.partials._paginate', compact('currentPage', 'lastPage', 'params'));
 }
-function rating($countReview, $courseSum){ 
-    $rating = $courseSum ?? 0 / $countReview;
+function rating($countReview, $sumRating){ 
+    $rating = $sumRating ?? 0 / $countReview;
     return view('layout.partials._rating', compact('rating', 'countReview'));
 }
 function star($rating){
@@ -26,6 +26,12 @@ function star($rating){
 }
 function wdFee($total = null){
     $wdFee = Setting::whereName('WDFee')->first();
+    if($total == 'withType'){
+        if($wdFee->type == 'Nominal'){
+            return $wdFee->value;
+        }
+        return $wdFee->value. '%';
+    }
     if($wdFee->type == 'Nominal' or $total == null){
         return $wdFee->value;
     }
@@ -33,6 +39,12 @@ function wdFee($total = null){
 }
 function transFee($total = null){
     $transFee = Setting::whereName('TransFee')->first();
+    if($total == 'withType'){
+        if($transFee->type == 'Nominal'){
+            return $transFee->value;
+        }
+        return $transFee->value. '%';
+    }
     if($transFee->type == 'Nominal' or $total == null){
         return $transFee->value;
     }
@@ -48,6 +60,14 @@ function transFeeType(){
 }
 function minWD(){
     return Setting::whereName('MinWD')->value('value');
+}
+function isRole($role){
+    if(!auth()->user()){
+        return false;
+    }elseif(auth()->user()->role == $role){
+        return true;
+    }
+    return false;
 }
 
 function formatPhone($phone){

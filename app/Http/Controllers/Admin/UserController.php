@@ -17,4 +17,13 @@ class UserController extends Controller
         }
         return view('admin.user.index', compact('users'));
     }
+    public function show($id){
+        $user = User::find($id);
+        return view('admin.user.show', compact('user'));
+    }
+    public function status(Request $request){
+        $this->validate($request, ['id' => 'required|max:200000000|numeric', 'status' => 'required|max:20']);
+        $user = User::whereId($request->id)->update(['status' => $request->status]);
+        return redirect()->back()->with('success', 'Status updated successfully');
+    }
 }

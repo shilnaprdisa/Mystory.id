@@ -10,10 +10,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\Admin\WithdrawalController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Student\TransactionController as StudentTransactionController;
 use App\Http\Controllers\Tentor\CourseController;
 use App\Http\Controllers\Tentor\EarningController as TentorEarningController;
-use App\Http\Controllers\Tentor\ReviewController;
 use App\Http\Controllers\Tentor\TransactionController as TentorTransactionController;
 use App\Http\Controllers\Tentor\WithdrawalController as TentorWithdrawalController;
 use Illuminate\Support\Facades\Route;
@@ -29,19 +31,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-    // return json_encode(array_rand(['ab', 'bc', 'cd']));
-});
+Route::get('/', [SiteController::class, 'index']);
+Route::get('/courses', [SiteController::class, 'courses']);
+Route::get('/courses/{id}', [SiteController::class, 'detail']);
 
 Route::get('/getProvinces', [AddressController::class, 'getProvinces']);
 Route::get('/getCities/{province_id}', [AddressController::class, 'getCities']);
 Route::get('/getDistricts/{district_id}', [AddressController::class, 'getDistricts']);
 Route::get('/getVillages/{village_id}', [AddressController::class, 'getVillages']);
+    
+Route::get('fee/{name}/{total}', [SettingController::class, 'fee']);
 
 Route::get('/login', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register/{type}', [AuthController::class, 'create']);
+Route::get('/register', function(){
+    return view('register_option');
+});
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/verification/{type}', [VerificationController::class, 'verification']);
@@ -50,6 +56,7 @@ Route::post('/verify', [VerificationController::class, 'viapost']);
 Route::get('/verify/{encrypt}', [VerificationController::class, 'viaget']);
 
 Route::get('/suspend', [AuthController::class, 'suspend']);
+Route::get('/pending', [AuthController::class, 'pending']);
 
 Route::group(['middleware' => ['auth', 'OtpVerification:Student,Tentor,Admin,Super']], function () {
     Route::post('/get-otp-register', [VerificationController::class, 'getOtpRegister']);
@@ -64,6 +71,8 @@ Route::group(['middleware' => ['auth', 'CheckRoles:Student,Tentor,Admin,Super']]
 
 Route::group(['middleware' => ['auth', 'CheckRoles:Student']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/transactions', StudentTransactionController::class);
+    Route::put('/reviews', [ReviewController::class, 'update']);
 });
 
 Route::prefix('tentor')->group(function(){
@@ -74,7 +83,7 @@ Route::prefix('tentor')->group(function(){
         Route::resource('transactions', TentorTransactionController::class);
         Route::resource('earnings', TentorEarningController::class);
         Route::resource('withdrawals', TentorWithdrawalController::class);
-        Route::get('wd-fee/{total}', [SettingController::class, 'wdFee']);
+        Route::get('fee/{name}/{total}', [SettingController::class, 'fee']);
         // Route::post('get-otp-wd', [VerificationController::class, 'getOtpWD']);
         // Route::get('withdrawals/create', [WithdrawalController::class, 'create']);
         // Route::post('withdrawals', [WithdrawalController::class, 'store']);
@@ -88,12 +97,18 @@ Route::prefix('admin')->group(function(){
         // Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
     
         Route::resource('users', UserController::class);
+        Route::post('users/status', [UserController::class, 'status']);
+
         Route::resource('lessons', LessonController::class);
         Route::resource('levels', LevelController::class);
         Route::resource('transactions', TransactionController::class);
         Route::resource('withdrawals', WithdrawalController::class);
+        Route::post('withdrawals/done', [WithdrawalController::class, 'done']);
 
         Route::get('earnings', [EarningController::class, 'index']);
+        Route::post('TransFee', [SettingController::class, 'TransFee']);
+        Route::post('WidFee', [SettingController::class, 'WidFee']);
+        Route::post('MinWD', [SettingController::class, 'MinWD']);
     
         // Route::post('payment', [TransactionController::class, 'payment']);
         // Route::resource('transactions', TransactionController::class);

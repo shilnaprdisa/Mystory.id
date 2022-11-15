@@ -3,3 +3,6 @@
     color: red;
     font-weight: 400
 }
+.setRating input{
+    display: none;
+}

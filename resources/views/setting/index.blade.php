@@ -52,7 +52,7 @@
                                     {{-- <p>You have full control to manage your own account setting.</p> --}}
                                 </div>
                                 <div class="checkout-form personal-address add-course-info">
-                                    <form action="/updateTransFee" method="POST">
+                                    <form action="/admin/TransFee" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -70,15 +70,15 @@
                                                 <label for="" class="form-check-label">Type</label>
                                                 <div class="mt-2">
                                                     <div class="form-check" style="float: left">
-                                                        <input class="form-check-input" type="radio" name="gender"
-                                                            value="Male" @if(transFeeType() == 'Persen') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="TransFeeType"
+                                                            value="Persen" @if(transFeeType() == 'Persen') checked @endif>
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                             Persen
                                                         </label>
                                                     </div>
                                                     <div class="form-check ms-3" style="float: left">
-                                                        <input class="form-check-input" type="radio" name="gender"
-                                                            value="Female" @if(transFeeType() == 'Nominal') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="TransFeeType"
+                                                            value="Nominal" @if(transFeeType() == 'Nominal') checked @endif>
                                                         <label class="form-check-label" for="flexRadioDefault2">
                                                             Nominal
                                                         </label>
@@ -102,16 +102,16 @@
                                     {{-- <p>You have full control to manage your own account setting.</p> --}}
                                 </div>
                                 <div class="checkout-form personal-address add-course-info">
-                                    <form action="/updateTransFee" method="POST">
+                                    <form action="/admin/WidFee" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Withdrawal Fee</label>
-                                                    <input type="text" name="WDFee" class="form-control pass-input" value="{{wdFee()}}" placeholder="Enter fee">
+                                                    <input type="text" name="WidFee" class="form-control pass-input" value="{{wdFee()}}" placeholder="Enter fee">
                                                     <small class="text-danger">
-                                                        @if ($errors->has('WDFee'))
-                                                            {{$errors->first('WDFee')}}
+                                                        @if ($errors->has('WidFee'))
+                                                            {{$errors->first('WidFee')}}
                                                         @endif
                                                     </small>
                                                 </div>
@@ -120,15 +120,15 @@
                                                 <label for="" class="form-check-label">Type</label>
                                                 <div class="mt-2">
                                                     <div class="form-check" style="float: left">
-                                                        <input class="form-check-input" type="radio" name="gender"
-                                                            value="Male" @if(wdFeeType() == 'Persen') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="WidFeeType"
+                                                            value="Persen" @if(wdFeeType() == 'Persen') checked @endif>
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                             Persen
                                                         </label>
                                                     </div>
                                                     <div class="form-check ms-3" style="float: left">
-                                                        <input class="form-check-input" type="radio" name="gender"
-                                                            value="Female" @if(wdFeeType() == 'Nominal') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="WidFeeType"
+                                                            value="Nominal" @if(wdFeeType() == 'Nominal') checked @endif>
                                                         <label class="form-check-label" for="flexRadioDefault2">
                                                             Nominal
                                                         </label>
@@ -144,10 +144,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-6 col-md-6">
+                        <div class="settings-widget profile-details mt-3">
+                            <div class="settings-menu p-0">
+                                <div class="profile-heading">
+                                    <h3>Minimal WD</h3>
+                                    {{-- <p>You have full control to manage your own account setting.</p> --}}
+                                </div>
+                                <div class="checkout-form personal-address add-course-info">
+                                    <form action="/admin/MinWD" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Minimal Withdrawal (rupiah)</label>
+                                                    <input type="text" name="MinWD" class="form-control pass-input" value="{{minWD()}}" placeholder="Enter minimal of Withdrawal">
+                                                    <small class="text-danger">
+                                                        @if ($errors->has('MinWD'))
+                                                            {{$errors->first('MinWD')}}
+                                                        @endif
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="update-profile">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                         
                     @endif
 						<!-- Change Password -->
-						<div class="col-xl-12 col-md-12">
+						<div class="@if(auth()->user()->role == 'Admin' or auth()->user()->role == 'Super') col-xl-6 col-md-6 @else col-xl-12 col-md-12 @endif">
 							<div class="settings-widget profile-details mt-3">
 								<div class="settings-menu p-0">
 									<div class="profile-heading">

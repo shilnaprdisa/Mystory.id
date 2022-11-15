@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
 
-                @if (Session::has('reply'))
+                @if (Session::has('review'))
                 <div class="alert alert-success" role="alert">
-                    {{Session::get('reply')}}
+                    {{Session::get('review')}}
                 </div>
                 @endif
 

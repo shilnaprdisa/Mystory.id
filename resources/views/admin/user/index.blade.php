@@ -1,6 +1,6 @@
 @extends('layout.master')
 @push('title')
-<title>Belajarin.Id - Classes</title>
+<title>Belajarin.Id - Users</title>
 @endpush
 @push('css')
 <!-- Select2 CSS -->
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="instruct-search-blk">
+                            {{-- <div class="instruct-search-blk">
                                 <div class="show-filter choose-search-blk">
                                     <form action="#">
                                         <div class="row gx-2 align-items-center">
@@ -51,19 +51,19 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         @foreach ($users as $user)                            
                             <div class="col-xl-4 col-lg-6 col-md-6 d-flex">
                                 <div class="student-box flex-fill">
                                     <div class="student-box-blks">
                                         <div class="student-img">
-                                            <a href="student-profile.html">
+                                            <a href="/admin/users/{{$user->id}}">
                                                 <img class="img-fluid" alt="Students Info" src="{{asset('assets/img/user/user1.jpg')}}">
                                             </a>
                                         </div>
                                         <div class="student-content pb-0">
-                                            <h5><a href="student-profile.html">{{$user->name}}</a></h5>
+                                            <h5><a href="/admin/users/{{$user->id}}">{{$user->name}}</a></h5>
                                             <div class="loc-blk d-flex align-items-center justify-content-center">                                                
                                                 <p>{{$user->role}}</p>
                                             </div>

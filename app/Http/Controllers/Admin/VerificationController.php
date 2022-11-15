@@ -88,7 +88,7 @@ class VerificationController extends Controller
             return view('verification.wd');
         }
         $user = User::find($verification->user_id);
-        $user->update(['status' => 'Active']);
+        $user->update(['is_verified' => true]);
         $role = $user->role;
         return view('verification.account_active',compact('role'));
     }

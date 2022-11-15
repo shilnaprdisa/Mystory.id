@@ -13,7 +13,16 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        return '<h2>halaman dashboard student sedang dalam pengembangan </h2>';
+        $transactions = Transaction::whereUserId(auth()->user()->id)->whereStatus('Paid')->count();
+        $study_time = Transaction::whereUserId(auth()->user()->id)->whereStatus('Paid')->sum('time');
+        $last_trans = Transaction::whereUserId(auth()->user()->id)->paginate(5);
+        $lessons = DB::table('transactions')
+                ->whereUserId(auth()->user()->id)
+                ->whereStatus('Paid')
+                ->select('lesson', DB::raw('count(*) as total'))
+                ->groupBy('lesson')
+                ->get()->count();
+        return view('student.dashboard.index', compact('transactions', 'study_time', 'lessons', 'last_trans'));
     }
     public function tentor(){
         $transactions = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->whereStatus('Paid')->count();

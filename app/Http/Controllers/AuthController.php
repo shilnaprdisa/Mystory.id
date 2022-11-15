@@ -61,6 +61,12 @@ class AuthController extends Controller
         }
         return view('auth.suspend');
     }
+    public function pending(){
+        if(auth()->user()){
+            Auth::logout();
+        }
+        return view('auth.pending');
+    }
 
     private function _validation(Request $request){
         return $this->validate($request,[

@@ -16,12 +16,17 @@ $next = $currentPage + 1;
             </li>
             @for ($i = 1; $i <= $lastPage; $i++)
                 <li class="page-item @if($currentPage == $i) first-page active @endif">
-                    <form action="" method="get">
+                    <form action="{{request()->url()}}" method="get">
+                        @foreach ($params as $key => $param)
+                            @if ($param)
+                                <input type="hidden" name="{{$key}}" value="{{$param}}">                                
+                            @endif
+                        @endforeach
                         <input type="hidden" name="page" value="{{$i}}">
                         <button type="submit" class="page-link">{{$i}}</button>
                     </form>
                 </li>
-                @endfor
+            @endfor
                 <li class="page-item next">
                     <form action="" method="get">
                         <input type="hidden" name="page" value="{{$next}}">

@@ -133,6 +133,7 @@ Version      : 1.0
 	        margin: 25,
 	        nav : false,
 	        nav: true,
+			autoplay: true,
 	        loop: true,
 	        responsive: {
 	          	0: {

@@ -36,6 +36,7 @@
                                 <table class="table table-nowrap mb-0">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Date</th>
                                             <th>Amount</th>
                                             <th>WD Fee</th>
@@ -49,6 +50,7 @@
                                     <tbody>
                                         @foreach ($wd as $w)
                                         <tr>
+                                            <td><a href="#!">{{$w->id}}</a></td>
                                             <td><a href="#!">{{tanggal($w->created_at)}}</a></td>
                                             <td><a href="#!">{{angka($w->amount)}}</a></td>
                                             <td><a href="#!">{{angka($w->wd_fee)}}</a></td>
@@ -157,7 +159,7 @@
     $('#check').on('click', function () {
         if(check()){
             $.ajax({
-                url: '/tentor/wd-fee/'+$('#amount').val(),
+                url: '/tentor/fee/wdFee/'+$('#amount').val(),
                 type: "GET",
                 dataType: "json",
                 success: function (data) {

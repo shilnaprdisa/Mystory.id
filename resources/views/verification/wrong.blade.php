@@ -30,7 +30,7 @@
 			<div class="error-box">
 				<div class="error-logo">
 					<a href="/">
-						<img src="{{asset('assets/img/logo.svg')}}" class="img-fluid" alt="Logo">
+						<img src="{{config('belajarin.logo')}}" class="img-fluid" alt="Logo">
 					</a>
 				</div>
 				{{-- <div class="error-box-img">

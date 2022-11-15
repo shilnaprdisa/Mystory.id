@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
 {
-    public function wdFee($total){
+    public function fee($name, $total){
+        if($name == 'transFee'){
+            return transFee($total);
+        }
         return wdFee($total);
     }
     public function index(){
@@ -59,5 +63,26 @@ class SettingController extends Controller
         $user->update($request->all());
         $user->address->update($request->all());
         return redirect()->back()->with('success', 'Data Updated Successfuly');
+    }
+    public function TransFee(Request $request){
+        $this->validate($request, [
+            'TransFee' => 'required|max:200000000|numeric',
+            'TransFeeType' => 'required|max:20'
+        ]);
+        Setting::whereName('TransFee')->update(['value' => $request->TransFee, 'type' => $request->TransFeeType]);
+        return redirect()->back()->with('success', 'Transaction Fee updated successfuly.');
+    }
+    public function WidFee(Request $request){
+        $this->validate($request, [
+            'WidFee' => 'required|max:200000000|numeric',
+            'WidFeeType' => 'required|max:20'
+        ]);
+        Setting::whereName('WDFee')->update(['value' => $request->WidFee, 'type' => $request->WidFeeType]);
+        return redirect()->back()->with('success', 'WD Fee updated successfuly.');
+    }
+    public function MinWD(Request $request){
+        $this->validate($request, ['MinWD' => 'required|max:200000000|numeric']);
+        Setting::whereName('MinWD')->update(['value' => $request->MinWD]);
+        return redirect()->back()->with('success', 'WD Fee updated successfuly.');
     }
 }

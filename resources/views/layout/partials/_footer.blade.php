@@ -27,10 +27,13 @@
                         <h2 class="footer-title">For Student</h2>
                         <ul>
                             <li><a href="#!">Panduan</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register/Student">Register</a></li>
                             <li><a href="#!">FAQ</a></li>
-                            <li><a href="#!"> Logout</a></li>
+                            @if (isRole('Student'))
+                                <li><a href="/logout"> Logout</a></li>
+                            @elseif(!auth()->user())
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register/Student">Register</a></li>                                
+                            @endif
                         </ul>
                     </div>
                     <!-- /Footer Widget -->
@@ -44,10 +47,13 @@
                         <h2 class="footer-title">For Tentor</h2>
                         <ul>
                             <li><a href="#!">Panduan</a></li>
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register/Tentor">Register</a></li>
                             <li><a href="#!">FAQ</a></li>
-                            <li><a href="#!"> Logout</a></li>
+                            @if (isRole('Tentor'))
+                                <li><a href="/logout"> Logout</a></li>
+                            @elseif(!auth()->user())
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register/Tentor">Register</a></li>                                
+                            @endif
                         </ul>
                     </div>
                     <!-- /Footer Widget -->

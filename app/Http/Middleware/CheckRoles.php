@@ -17,8 +17,10 @@ class CheckRoles
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (in_array($request->user()->role, $roles)) {
-            if($request->user()->status == 'Pending'){
+            if(!$request->user()->is_verified){
                 return redirect('/verification/Register');
+            }elseif($request->user()->status == 'Pending'){
+                return redirect('/pending');
             }elseif($request->user()->status == 'Banned' or $request->user()->status == 'Deleted'){
                 return redirect('/suspend');
             }

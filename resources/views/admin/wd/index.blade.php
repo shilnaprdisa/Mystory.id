@@ -25,6 +25,11 @@
                         {{Session::get('success')}}
                     </div>                    
                 @endif
+                @if (Session::has('failed'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('failed')}}
+                    </div>                    
+                @endif
                 <div class="row">
                     <div class="col-md-12">
                         <div class="settings-widget">
@@ -46,8 +51,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-6 col-lg-6 col-item text-end">
-                                                        <a href="#!"
-                                                            class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLevelModal">New Class</a>
+                                                        {{-- <a href="#!"
+                                                            class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLevelModal">New Class</a> --}}
                                                     </div>
                                                 </div>
                                             </form>
@@ -59,6 +64,7 @@
                                         <table class="table table-nowrap mb-2">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>NAME</th>
                                                     <th>AMOUNT</th>
                                                     <th>WD FEE</th>
@@ -74,6 +80,13 @@
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
+                                                                    <p><a href="#!">{{$w->id}}</a></p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-tabel-info">
                                                                     <p><a href="#!">{{$w->user->name}}</a></p>
                                                                 </div>
                                                             </div>
@@ -81,28 +94,30 @@
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$w->amount}}</a></p>
+                                                                    <p><a href="#!">{{angka($w->amount)}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$w->wd_fee}}</a></p>
+                                                                    <p><a href="#!">{{angka($w->wd_fee)}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$w->received}}</a></p>
+                                                                    <p><a href="#!">{{angka($w->received)}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$w->status}}</a></p>
+                                                                    <p><a href="#!">
+                                                                        <span class="@if ($w->status == 'Done') text-success @else text-warning @endif">{{$w->status}}</span>
+                                                                    </a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -115,10 +130,12 @@
                                                         </td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-success">Edit</button>
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-danger">Delete</button>
+                                                                @if ($w->status == 'Done')
+                                                                    <small class="text-secondary">Completed</small>
+                                                                @else
+                                                                    <button type="button" onclick="doneConfirm({{$w->id}})"
+                                                                        class="btn btn-sm btn-success">Done</button>                                                                    
+                                                                @endif
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -168,6 +185,33 @@
     </div>
 </div>
 
+<!-- Modal Done -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm</h5>{{$errors}}
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/admin/withdrawals/done" method="post" id="confirm">
+                @csrf
+                <input type="hidden" name="id" id="id" value="{{old('id')}}">
+                <div class="modal-body">
+                     Are you sure, you want to confirm?
+                     <div class="form-group">
+                        <label class="form-control-label">Please Enter Total Received</label>
+                        <input type="text" name="received" class="form-control" placeholder="Enter received">
+                        <small class="text-danger">@if($errors->has('received')) {{$errors->first('received')}} @endif</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endpush
 
 @push('js')
@@ -175,4 +219,15 @@
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <!-- Feature JS -->
 <script src="{{asset('assets/plugins/feather/feather.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        @if($errors->any())
+            $('#confirmModal').modal('show');
+        @endif        
+        function doneConfirm(id){
+            $('#id').val(id);
+            $('#confirmModal').modal('show');
+        }
+    });
+</script>
 @endpush

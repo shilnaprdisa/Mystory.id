@@ -25,9 +25,8 @@ class UserSeeder extends Seeder
             'role' => 'Super',
             'status' => 'Active',
             'gender' => 'Male',
-            'rating_score' => '0',
             'is_online' => false,
-            'is_verified' => false,
+            'is_verified' => true,
             'password' => 'super',
             'remember_token' => uniqid()
         ]);
@@ -41,9 +40,8 @@ class UserSeeder extends Seeder
             'role' => 'Admin',
             'status' => 'Active',
             'gender' => 'Male',
-            'rating_score' => '0',
             'is_online' => false,
-            'is_verified' => false,
+            'is_verified' => true,
             'password' => 'admin',
             'remember_token' => uniqid()
         ]);
@@ -57,9 +55,8 @@ class UserSeeder extends Seeder
             'role' => 'Tentor',
             'status' => 'Active',
             'gender' => 'Male',
-            'rating_score' => '0',
             'is_online' => false,
-            'is_verified' => false,
+            'is_verified' => true,
             'password' => 'tentor',
             'remember_token' => uniqid()
         ]);
@@ -73,9 +70,8 @@ class UserSeeder extends Seeder
             'role' => 'Student',
             'status' => 'Active',
             'gender' => 'Male',
-            'rating_score' => '0',
             'is_online' => false,
-            'is_verified' => false,
+            'is_verified' => true,
             'password' => 'student',
             'remember_token' => uniqid()
         ]);

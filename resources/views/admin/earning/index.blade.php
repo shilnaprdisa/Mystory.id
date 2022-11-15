@@ -18,8 +18,8 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>REVENUE</h6>
-                                    <h4 class="instructor-text-success">{{rupiah($revenue)}}</h4>
+                                    <h6>Total Income</h6>
+                                    <h4 class="instructor-text-success">{{rupiah($trans_income + $wd_income)}}</h4>
                                     <p>Earning this year</p>
                                 </div>
                             </div>
@@ -29,8 +29,8 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>INCOME</h6>
-                                    <h4 class="instructor-text-info">{{rupiah($income)}}</h4>
+                                    <h6>Trans Income</h6>
+                                    <h4 class="instructor-text-info">{{rupiah($trans_income)}}</h4>
                                     <p>Income this year</p>
                                 </div>
                             </div>
@@ -40,9 +40,9 @@
                         <div class="card instructor-card w-100">
                             <div class="card-body">
                                 <div class="instructor-inner">
-                                    <h6>TENTORS INCOME</h6>
-                                    <h4 class="instructor-text-warning">{{rupiah($tentors_income)}}</h4>
-                                    <p>Tentors Income this year</p>
+                                    <h6>WD Income</h6>
+                                    <h4 class="instructor-text-warning">{{rupiah($wd_income)}}</h4>
+                                    <p>Income this year</p>
                                 </div>
                             </div>
                         </div>

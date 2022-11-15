@@ -36,9 +36,10 @@
 				{{-- <div class="error-box-img">
 					<img src="{{asset('assets/img/error-01.png" alt="" class="img-fluid" >
 				</div> --}}
-				<h3 class="h2 mb-3"> Limit Verifikasi</h3>
-				<p class="h4 font-weight-normal">Anda melebihi batas maksimal verifikasi harian sebanyak 5 kali, silahkan coba lagi besok!</p>
-				<a href="/" class="btn btn-primary">Kembali ke Beranda</a>
+				<h3 class="h2 mb-3"> Who are you?</h3>
+				{{-- <p class="h4 font-weight-normal">Kami akan menghubungi anda melalui email setelah proses peninjauan selesai.</p> --}}
+				<a href="/register/Student" class="btn btn-primary">I'm a Student</a>
+				<a href="/register/Tentor" class="btn btn-primary">I'm a Tentor</a>
 			</div>
 		
         </div>

@@ -4,7 +4,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Belajarin.Id</title>
+		@stack('title')
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.svg')}}">
@@ -16,42 +16,49 @@
 		<link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/fontawesome.min.css')}}">
 		<link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
 
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+		
 		<!-- Feathericon CSS -->
         <link rel="stylesheet" href="{{asset('assets/plugins/feather/feather.css')}}">
 
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-	</head>
-    <body class="error-page">
 	
+	</head>
+	<body>
+
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+            @include('layout.partials._header')
+			<!-- /Header -->
 			
-			<div class="error-box">
-				<div class="error-logo">
-					<a href="/">
-						<img src="{{config('belajarin.logo')}}" class="img-fluid" alt="Logo">
-					</a>
-				</div>
-				{{-- <div class="error-box-img">
-					<img src="{{asset('assets/img/error-01.png" alt="" class="img-fluid" >
-				</div> --}}
-				<h3 class="h2 mb-3"> Limit Verifikasi</h3>
-				<p class="h4 font-weight-normal">Anda melebihi batas maksimal verifikasi harian sebanyak 5 kali, silahkan coba lagi besok!</p>
-				<a href="/" class="btn btn-primary">Kembali ke Beranda</a>
-			</div>
-		
-        </div>
-		<!-- /Main Wrapper -->
-		
+			@stack('content')
+			
+			<!-- Footer -->
+            @include('layout.partials._footer')
+			<!-- /Footer -->
+		   
+		</div>
+	   <!-- /Main Wrapper -->
+	  
 		<!-- jQuery -->
 		<script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
 		
 		<!-- Bootstrap Core JS -->
 		<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 		
+		<!-- Select2 JS -->
+	  	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{{asset('assets/plugins/theia-sticky-sidebar/ResizeSensor.js')}}"></script>
+        <script src="{{asset('assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js')}}"></script>
+		
 		<!-- Custom JS -->
 		<script src="{{asset('assets/js/script.js')}}"></script>
-
+		
 	</body>
 </html>
