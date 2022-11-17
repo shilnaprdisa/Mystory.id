@@ -39,7 +39,7 @@
 								{{Session::get('success')}}
 							</div>
 							@endif
-                            <a href="{{(auth()->user()->role == 'Customer') ? '/dashboard' : (auth()->user()->role == 'Tentor' ? '/tentor' : '/admin')}}"><i class="fa fa-arrow-left"></i> Dashboard</a>	
+                            <a href="{{(isRole('Student')) ? '/dashboard' : (isRole('Tentor') ? '/tentor' : '/admin')}}"><i class="fa fa-arrow-left"></i> Dashboard</a>	
 							<div class="settings-widget profile-details mt-3">
 								<div class="settings-menu p-0">
 									<div class="profile-heading">

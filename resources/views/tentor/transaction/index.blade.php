@@ -66,20 +66,15 @@
                                     <tbody>
                                         @foreach ($transactions as $transaction)
                                             <tr>
-                                                <td><a href="#!">{{$transaction->user->name}}</a></td>
-                                                <td><a href="#!">{{$transaction->lesson}}</a></td>
-                                                <td><a href="#!">{{$transaction->level}}</a></td>
-                                                <td><a href="#!">{{$transaction->time}} Jam</a></td>
-                                                <td><a href="#!"><span class="text-success">{{rupiah($transaction->total_price)}}</span></a></td>
-                                                <td><a href="#!">{{$transaction->status}}</a></td>
-                                                <td><a href="#!">{{tgltime($transaction->created_at)}}</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{$transaction->user->name}}</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{$transaction->lesson}}</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{$transaction->level}}</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{$transaction->time}} Jam</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}"><span class="text-success">{{rupiah($transaction->total_price)}}</span></a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{$transaction->status}}</a></td>
+                                                <td><a href="/tentor/transaction/{{$transaction->id}}">{{tgltime($transaction->created_at)}}</a></td>
                                                 <td>
-                                                    @if ($transaction->status == 'Paid')
-                                                        finished
-                                                    @else
-                                                        <a href="#!" class="btn btn-primary me-1">Approve</a>
-                                                        <a href="#!" class="btn btn-danger me-1">Reject</a>                                                        
-                                                    @endif
+                                                    <a href="/tentor/transactions/{{$transaction->id}}" class="btn btn-primary me-1">Detail</a>
                                                 </td>
                                             </tr>                                            
                                         @endforeach

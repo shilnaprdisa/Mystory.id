@@ -4,7 +4,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		@stack('title')
+		<title>Belajarin.id Invoice #{{$transaction->id}}</title>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.svg')}}">
@@ -14,53 +14,46 @@
 		
 		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/fontawesome.min.css')}}">
-		<link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">
-
-		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.min.css')}}">	
 		
+		@stack('css')
+
 		<!-- Feathericon CSS -->
         <link rel="stylesheet" href="{{asset('assets/plugins/feather/feather.css')}}">
 
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 	
 	</head>
 	<body>
 
 		<!-- Main Wrapper -->
 		<div class="main-wrapper">
-		
-			<!-- Header -->
-            @include('layout.partials._header')
-			<!-- /Header -->
 			
-			@stack('content')
-			
-			<!-- Footer -->
-            @include('layout.partials._footer')
-			<!-- /Footer -->
+			<!--Dashbord Student -->
+        	@include('layout.partials._invoice')
+			<!-- /Dashbord Student -->
 		   
 		</div>
 	   <!-- /Main Wrapper -->
 	  
 		<!-- jQuery -->
 		<script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+		<script src="{{asset('assets/js/ajax-jquery.min.js')}}"></script>
 		
 		<!-- Bootstrap Core JS -->
 		<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-		
-		<!-- Select2 JS -->
-	  	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
-		
-		<!-- Sticky Sidebar JS -->
-        <script src="{{asset('assets/plugins/theia-sticky-sidebar/ResizeSensor.js')}}"></script>
-        <script src="{{asset('assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js')}}"></script>
-
-		
+        
 		<!-- Custom JS -->
 		<script src="{{asset('assets/js/script.js')}}"></script>
-		@stack('js')
+
+        <script>
+            window.print()
+			// window.onafterprint = function () {
+			// 	window.location.href = '/transactions/{{$transaction->id}}';
+            // }
+        </script>
 		
 	</body>
 </html>

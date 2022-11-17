@@ -21,7 +21,7 @@
                         <div class="form-inner">
                             <div class="input-group">
                                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                                <input type="text" name="search" class="form-control" placeholder="Search School, Online eductional centers, etc">
+                                <input type="text" name="search" class="form-control" placeholder="Search Tentor, Class, etc">
                                 <span class="drop-detail">
                                     <select class="form-select select" name="lesson">
                                         <option value="">Lesson</option>
@@ -149,6 +149,7 @@
         </div>
         <div class="owl-carousel mentoring-course owl-theme aos" data-aos="fade-up">
             @foreach ($lessons as $lesson)
+            <a href="/courses?lesson={{$lesson->id}}">
                 <div class="feature-box text-center " >					
                     <div class="feature-bg" >					
                         <div class="feature-header">
@@ -161,7 +162,8 @@
                         </div>
                         <p>{{$lesson->courses->count()}} Tentors</p>
                     </div>
-                </div>                
+                </div>
+            </a>
             @endforeach
         </div>
     </div>
@@ -379,7 +381,7 @@
         <div class="feature-instructors">
             <div class="section-header aos" data-aos="fade-up">
                 <div class="section-sub-head feature-head text-center">
-                    <h2>Featured Instructor</h2>
+                    <h2>Featured Tentor</h2>
                     <div class="section-text aos" data-aos="fade-up">
                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.</p>
                     </div>
@@ -469,11 +471,11 @@
             </div>
             <div class="col-md-6 d-flex align-items-center"> 
                 <div class="join-mentor aos" data-aos="fade-up">
-                    <h2>Want to share your knowledge? Join us a Mentor</h2>
-                    <p>High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.</p>
+                    <h2>Want to share your knowledge? Join us a Tentor</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum necessitatibus sunt explicabo! Facere magni a rem unde ducimus, dolore nemo expedita autem cupiditate explicabo dolor necessitatibus voluptatem nesciunt eos quibusdam.</p>
                     <ul class="course-list">
                         <li><i class="fa-solid fa-circle-check"></i>Best Courses</li>
-                        <li><i class="fa-solid fa-circle-check"></i>Top rated Instructors</li>
+                        <li><i class="fa-solid fa-circle-check"></i>Top rated Tentors</li>
                     </ul>
                     <div class="all-btn all-category d-flex align-items-center">
                         <a href="instructor-list.html" class="btn btn-primary">Read More</a>

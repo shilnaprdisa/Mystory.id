@@ -131,12 +131,12 @@
                                     <tbody>
                                         @foreach ($last_trans as $trans)
                                             <tr>
-                                                <td>{{$trans->user->name}}</td>
-                                                <td>{{$trans->lesson}}</td>
-                                                <td>{{$trans->level}}</td>
-                                                <td><span class="text-success">{{rupiah($trans->total_price)}}</span></td>
-                                                <td>{{$trans->status}}</td>
-                                                <td>{{tanggal($trans->created_at)}}</td>
+                                                <td><a href="/tentor/transactions/{{$trans->id}}">{{$trans->user->name}}</a></td>
+                                                <td><a href="/tentor/transactions/{{$trans->id}}">{{$trans->lesson}}</a></td>
+                                                <td><a href="/tentor/transactions/{{$trans->id}}">{{$trans->level}}</a></td>
+                                                <td><span class="text-success"><a href="/tentor/transactions/{{$trans->id}}">{{rupiah($trans->total_price)}}</a></span></td>
+                                                <td><a href="/tentor/transactions/{{$trans->id}}">{{$trans->status}}</a></td>
+                                                <td><a href="/tentor/transactions/{{$trans->id}}">{{tanggal($trans->created_at)}}</a></td>
                                             </tr>                                            
                                         @endforeach
                                     </tbody>

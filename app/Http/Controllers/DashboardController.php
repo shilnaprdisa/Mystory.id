@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index(){
         $transactions = Transaction::whereUserId(auth()->user()->id)->whereStatus('Paid')->count();
         $study_time = Transaction::whereUserId(auth()->user()->id)->whereStatus('Paid')->sum('time');
-        $last_trans = Transaction::whereUserId(auth()->user()->id)->paginate(5);
+        $last_trans = Transaction::whereUserId(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         $lessons = DB::table('transactions')
                 ->whereUserId(auth()->user()->id)
                 ->whereStatus('Paid')
@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $transactions = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->whereStatus('Paid')->count();
         $reviews = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->count();
         $rating = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->sum('rating') / $reviews;
-        $last_trans = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->paginate(5);
+        $last_trans = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->orderBy('id', 'desc')->paginate(5);
         return view('tentor.dashboard.index', compact('transactions', 'reviews', 'rating', 'last_trans'));
     }
     public function admin(){

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Notification;
 use App\Models\Setting;
 
 function rupiah($amount){
@@ -69,6 +70,9 @@ function isRole($role){
     }
     return false;
 }
+function tranStatus($id, $status, $type){
+    return view('layout.partials._transtatus', compact('id', 'status', 'type'));
+}
 
 function formatPhone($phone){
     // kadang ada penulisan no hp 0811 239 345
@@ -127,4 +131,92 @@ function terbilang($angka)
         $terbilang = terbilang($angka / 1000000) . " juta" . terbilang($angka % 1000000);
     }
     return $terbilang;
+}
+function sendNotif($transaction){        
+    $name = $transaction->user->name;
+    $uri = '/transactions/'.$transaction->id;
+    $uritentor = '/tentor/transactions/'.$transaction->id;
+    
+    if($transaction->status == 'Order'){
+        $user_id = $transaction->course->user->id;//tentor
+        $title = "Pesanan Baru";
+        $description = "Ada pesanan baru dari $name,segera terima untuk membuat kesepakatan!";
+        $status = 'Sended';
+        $type = 'Order';
+        $uri = $uritentor;
+    }elseif($transaction->status == 'Agree'){
+        $user_id = $transaction->user_id;//student
+        $title = "Berhasil Menemukan Tentor";
+        $description = "Kami berhasil menemukan tentor untuk anda, Segera panggil!";
+        $status = 'Sended';
+        $type = 'Agree';
+    }elseif($transaction->status == 'Come'){
+        $user_id = $transaction->course->user->id;//tentor
+        $title = "Pelanggan Memanggil";
+        $description = "Pelanggan dengan atas nama $name mengharapkan anda untuk datang ke lokasi, bersegeralah!";
+        $status = 'Sended';
+        $type = 'Come';
+        $uri = $uritentor;
+    }elseif($transaction->status == 'Process'){
+        $user_id = $transaction->course->user->id;//tentor
+        $title = "Selamat Mengajar";
+        $description = "Proses belajar dimulai!";
+        $status = 'Sended';
+        $type = 'Process';
+    }elseif($transaction->status == 'Done'){
+        $user_id = $transaction->user_id;//student
+        $title = "Proses Belajar Selesai";
+        $description = "Proses belajar telah selesai, silahkan lakukan pembayaran!";
+        $status = 'Sended';
+        $type = 'Done';
+    }elseif($transaction->status == 'Paid'){
+        $payment = $transaction->payment_code;
+        $user_id = $transaction->user_id;
+        $title = "Pembayaran Berhasil";
+        $description = "Pembayaran dengan nomor id $payment telah berhasil. Terimaksih telah menggunakan jasa layanan kami";
+        $status = 'Sended';
+        $type = 'Paid';
+        $notification = Notification::create([
+            'user_id' => $transaction->course->user->id, 'title' => $title, 'description' => "$name berhasil melakukan pembayaran, mintalah untuk memberikan review terbaik!",
+            'status' => $status, 'type' => 'Paid', 'uri' => $uritentor
+        ]);
+    }elseif($transaction->status == 'PaymentFailed'){
+        $payment = $transaction->payment_code;
+        $user_id = $transaction->user_id;
+        $title = "Pembayaran Gagal";
+        $description = "Pembayaran dengan nomor id $payment gagal. silahkan melakukan pembayaran ulang";
+        $status = 'Sended';
+        $type = 'NotFound';
+    }elseif($transaction->status == 'NotFound'){
+        $user_id = $transaction->user_id;
+        $title = "Gagal Menemukan Tentor";
+        $description = "Kami tidak berhasil menemukan tentor disekitar anda.";
+        $status = 'Sended';
+        $type = 'NotFound';
+    }elseif($transaction->status == 'Cancel'){
+        $id = $transaction->id;
+        $user_id = $transaction->user_id;
+        $title = "Pesanan dibatalkan";
+        $description = "Pesanan dengan ID $id dibatalkan.";
+        $status = 'Sended';
+        $type = 'Cancel';
+        $notification = Notification::create([
+            'user_id' => $transaction->course->user->id, 'title' => $title, 'description' => "Pesanan dengan ID $id dibatalkan.",
+            'status' => $status, 'type' => $type, 'uri' => $uritentor
+        ]);
+    }else{ //review
+        $user_id = $transaction->user_id;
+        $name = $transaction->user->name;
+        $title = "Review Dari $name";
+        $description = "INI BELUM KELAR";
+        $status = 'Sended';
+        $type = 'Cancel';
+    }
+
+    $notification = Notification::create([
+        'user_id' => $user_id, 'title' => $title, 'description' => $description,
+        'status' => $status, 'type' => $type, 'uri' => $uri
+    ]);
+
+    return $notification;
 }

@@ -42,7 +42,7 @@
                                 <a href="/dashboard" @if(request()->is('dashboard')) style='color: #392C7D; font-weight: bold;'@endif>Dashboard</a>
                             </li>
                             <li>
-                                <a href="/transactions" @if(request()->is('transactions')) style='color: #392C7D; font-weight: bold;'@endif>Transactions</a>
+                                <a href="/transactions" @if(request()->is('transactions') or request()->is('transactions/*')) style='color: #392C7D; font-weight: bold;'@endif>Transactions</a>
                             </li>
 
                         @elseif(isRole('Tentor'))
@@ -54,7 +54,7 @@
                                 <a href="/tentor/courses" @if(request()->is('tentor/courses') or request()->is('tentor/courses/*')) style='color: #392C7D; font-weight: bold;'@endif>Courses</a>
                             </li>
                             <li>
-                                <a href="/tentor/transactions" @if(request()->is('tentor/transactions')) style='color: #392C7D; font-weight: bold;'@endif>Transactions</a>
+                                <a href="/tentor/transactions" @if(request()->is('tentor/transactions') or request()->is('tentor/transactions/*')) style='color: #392C7D; font-weight: bold;'@endif>Transactions</a>
                             </li>
                             <li>
                                 <a href="/tentor/reviews" @if(request()->is('tentor/reviews')) style='color: #392C7D; font-weight: bold;'@endif>Reviews</a>

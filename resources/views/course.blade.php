@@ -46,12 +46,14 @@
 						</div>
 						<div class="col-lg-6">	
 							<div class="show-filter add-course-info">
-								<form action="#">
+								<form action="" method="GET" id="formSearch">
+									<input type="hidden" name="lesson" value="{{request('lesson')}}" id="lesson">
+									<input type="hidden" name="level" value="{{request('level')}}" id="level">
 									<div class="row gx-2 align-items-center">	
 										<div class="col-md-12 col-item">
 											<div class=" search-group">
 												<i class="feather-search"></i>
-												<input type="text" name="search" value="{{request('search') ?? null}}" class="form-control" placeholder="Search our courses" >
+												<input type="text" name="search" value="{{request('search')}}" class="form-control" placeholder="Search our courses" >
 											</div>
 										</div>
 									</div>
@@ -101,7 +103,7 @@
 										</div>
 										{{rating($course->reviews->count(), $course->reviews->sum('rating'))}}
 										<div class="all-btn all-category d-flex align-items-center">
-											<a href="checkout.html" class="btn btn-primary">ORDER NOW</a>
+											<a href="/courses/{{$course->id}}" class="btn btn-primary">ORDER NOW</a>
 										</div>
 									</div>
 								</div>
@@ -112,12 +114,12 @@
                 {{pagi($courses->currentPage(), $courses->lastPage(), ['search' => request('search'), 'lesson' => request('lesson')])}}
 				
 			</div>
-			<div class="col-lg-3 theiaStickySidebar">
+			<div class="col-lg-3">
 				<div class="filter-clear">
 					<div class="clear-filter d-flex align-items-center">
 						<h4><i class="feather-filter"></i>Filters</h4>
 						<div class="clear-text">
-							<p>CLEAR</p>
+							<p><a href="/courses">CLEAR</a></p>
 						</div>
 					</div>
 					
@@ -126,58 +128,17 @@
 						<div class="card-body">
 							<div class="filter-widget mb-0">
 								<div class="categories-head d-flex align-items-center">
-									<h4>Course categories</h4>
+									<h4>Lessons</h4>
 									<i class="fas fa-angle-down"></i>
 								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" >
-										<span class="checkmark"></span> Backend (3)
-
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" >
-										<span class="checkmark"></span>  CSS (2)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist">
-										<span class="checkmark"></span>  Frontend (2)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" checked>
-										<span class="checkmark"></span> General (2)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" checked>
-										<span class="checkmark"></span> IT & Software (2)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist">
-										<span class="checkmark"></span> Photography (2)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist">
-										<span class="checkmark"></span>  Programming Language (3)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check mb-0">
-										<input type="checkbox" name="select_specialist">
-										<span class="checkmark"></span>  Technology (2)
-									</label>
-								</div>
+								@foreach ($lessons as $lesson)
+									<div>
+										<label class="custom_check custom_one">
+											<input type="radio" value="{{$lesson->id}}" @if($lesson->id == request('lesson')) checked @endif name="lesson" >
+											<span class="checkmark"></span> {{$lesson->name}} ({{$lesson->courses->count()}})
+										</label>
+									</div>									
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -188,67 +149,17 @@
 						<div class="card-body">
 							<div class="filter-widget mb-0">
 								<div class="categories-head d-flex align-items-center">
-									<h4>Instructors</h4>
+									<h4>Class</h4>
 									<i class="fas fa-angle-down"></i>
 								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" >
-										<span class="checkmark"></span> Keny White (10)
-
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist" >
-										<span class="checkmark"></span>  Hinata Hyuga (5)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check">
-										<input type="checkbox" name="select_specialist">
-										<span class="checkmark"></span>  John Doe (3)
-									</label>
-								</div>
-								<div>
-									<label class="custom_check mb-0">
-										<input type="checkbox" name="select_specialist" checked>
-										<span class="checkmark"></span> Nicole Brown
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /Search Filter -->
-					
-					<!-- Search Filter -->
-					<div class="card search-filter ">
-						<div class="card-body">
-							<div class="filter-widget mb-0">
-								<div class="categories-head d-flex align-items-center">
-									<h4>Price</h4>
-									<i class="fas fa-angle-down"></i>
-								</div>
-								<div>
-									<label class="custom_check custom_one">
-										<input type="radio" name="select_specialist" >
-										<span class="checkmark"></span> All (18)
-
-									</label>
-								</div>
-								<div>
-									<label class="custom_check custom_one">
-										<input type="radio" name="select_specialist" >
-										<span class="checkmark"></span>  Free (3) 
-
-									</label>
-								</div>
-								<div>
-									<label class="custom_check custom_one mb-0">
-										<input type="radio" name="select_specialist" checked>
-										<span class="checkmark"></span>  Paid (15)
-									</label>
-								</div>
+								@foreach ($levels as $level)
+									<div>
+										<label class="custom_check">
+											<input type="radio" value="{{$level->id}}" @if($level->id == request('level')) checked @endif name="level" >
+											<span class="checkmark"></span> {{$level->name}} ({{$level->courses->count()}})
+										</label>
+									</div>									
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -290,4 +201,23 @@
 	</div>
 </section>
 <!-- /Course -->
+@endpush
+
+@push('js')
+<script>
+	$(document).ready(function () {
+		$("input[type='radio'][name='lesson']").on('change', function(){
+			searchForm()
+		})
+		$("input[type='radio'][name='level']").on('change', function(){
+			searchForm()
+		})
+	});
+
+	function searchForm(){
+		$('#lesson').val($("input[type='radio'][name='lesson']:checked").val())
+		$('#level').val($("input[type='radio'][name='level']:checked").val())
+		$('#formSearch').submit()
+	}
+</script>
 @endpush

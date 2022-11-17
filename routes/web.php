@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth', 'OtpVerification:Student,Tentor,Admin,Sup
     Route::post('/get-otp-register', [VerificationController::class, 'getOtpRegister']);
 });
 Route::group(['middleware' => ['auth', 'CheckRoles:Student,Tentor,Admin,Super']], function () {//all users
+    Route::get('/invoice/{id}', [SiteController::class, 'invoice']);
+    
     Route::get('/profile', [SettingController::class, 'profile']);
     Route::post('/updateProfile', [SettingController::class, 'updateProfile']);
     Route::get('/setting', [SettingController::class, 'index']);
