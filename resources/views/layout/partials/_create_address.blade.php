@@ -188,7 +188,7 @@
 
         function detail() {
             let str =
-                `${$('#village').find(':selected').text()}, ${$('#district').find(':selected').text()}, ${$('#city').find(':selected').text()}, ${$('#province').find(':selected').text()} ${$('#zip_code').val()}`;
+                `${$('#village').find(':selected').text()}, ${$('#district').find(':selected').text()}, ${$('#city').find(':selected').text()}, ${$('#province').find(':selected').text()} (${$('#zip_code').val()})`;
             str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
                 return letter.toUpperCase();
             });

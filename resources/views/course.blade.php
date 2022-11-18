@@ -103,7 +103,7 @@
 										</div>
 										{{rating($course->reviews->count(), $course->reviews->sum('rating'))}}
 										<div class="all-btn all-category d-flex align-items-center">
-											<a href="/courses/{{$course->id}}" class="btn btn-primary">ORDER NOW</a>
+											<a href="/courses/{{$course->id}}" class="btn btn-primary">Pesan Sekarang</a>
 										</div>
 									</div>
 								</div>

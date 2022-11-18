@@ -97,14 +97,8 @@
                                 <p>{{$course->transactions->count()}} Transactions</p>
                             </div>
                         </div>
-                        {{-- <p>UI/UX Designer, with 7+ Years Experience. Guarantee of High Quality Work.</p>
-                        <p>Skills: Web Design, UI Design, UX/UI Design, Mobile Design, User Interface Design, Sketch,
-                            Photoshop, GUI, Html, Css, Grid Systems, Typography, Minimal, Template, English, Bootstrap,
-                            Responsive Web Design, Pixel Perfect, Graphic Design, Corporate, Creative, Flat, Luxury and
-                            much more.</p>
-
-
-                        <p>Available for:</p>
+                        <p>{{$course->description}}</p>
+                        {{-- <p>Available for:</p>
                         <ul>
                             <li>1. Full Time Office Work</li>
                             <li>2. Remote Work</li>

@@ -12,19 +12,19 @@
             <div class="col-md-7">
                 <div class="home-slide-face aos" data-aos="fade-up">
                     <div class="home-slide-text ">
-                        <h5>The Leader in Online Learning</h5>
-                        <h1>Engaging &  Accessible Online Courses For All</h1>
-                        <p>Own your future learning new skills online</p>
+                        <h5>Belajarin.ID</h5>
+                        <h1>Belajar Kapanpun Dan Dimanapun</h1>
+                        <p>Tingkatkan skill untuk meraih masadepan</p>
                     </div>
                     <div class="banner-content">
                     <form class="form" action="/courses">
                         <div class="form-inner">
                             <div class="input-group">
                                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                                <input type="text" name="search" class="form-control" placeholder="Search Tentor, Class, etc">
+                                <input type="text" name="search" class="form-control" placeholder="Cari Tentor, Kelas, atau Apapun">
                                 <span class="drop-detail">
                                     <select class="form-select select" name="lesson">
-                                        <option value="">Lesson</option>
+                                        <option value="">Pelajaran</option>
                                         @foreach ($lessons as $lesson)
                                             <option value="{{$lesson->id}}">{{$lesson->name}}</option>                                            
                                         @endforeach
@@ -36,7 +36,7 @@
                     </form>
                     </div>
                     <div class="trust-user">
-                        <p>Trusted by over 15K Users <br>worldwide since 2022</p>
+                        <p>Diminati lebih dari 15K <br> Pengguna seluruh Indonesia sejak 2022</p>
                         <div class="trust-rating d-flex align-items-center">
                             <div class="rate-head">
                                 <h2><span>1000</span>+</h2>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="course-inner-content">
                                     <h4><span>{{$lessons->count()}}</span></h4>
-                                    <p>Lessons</p>
+                                    <p>Mata Pelajaran</p>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="course-inner-content">
                                     <h4><span>{{$tentors->total()}}</span></h4>
-                                    <p>Expert Tentors</p>
+                                    <p>Tentor</p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="course-inner-content">
                                     <h4><span>{{$tentors->total()}}</span></h4>
-                                    <p>Courses</p>
+                                    <p>Kursus</p>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="course-inner-content">
                                     <h4><span>{{$students}}</span></h4>
-                                    <p>Online Students</p> 
+                                    <p>Pelajar</p> 
                                 </div>
                             </div>
                         </div>
@@ -137,15 +137,15 @@
     <div class="container">
         <div class="section-header aos" data-aos="fade-up">
             <div class="section-sub-head">
-                <span>Favourite Lesson</span>
-                <h2>Top Lesson</h2>
+                <span>Mata Pelajaran Favorite</span>
+                <h2>Mata Pelajaran Terbaik</h2>
             </div>
             {{-- <div class="all-btn all-category d-flex align-items-center">
                 <a href="job-category.html" class="btn btn-primary">All Categories</a>
             </div> --}}
         </div>
         <div class="section-text aos" data-aos="fade-up">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.</p>
+            <p>Temukan kursus sesuai bakat dan minat berdasarkan mata pelajaran yang tersedia</p>
         </div>
         <div class="owl-carousel mentoring-course owl-theme aos" data-aos="fade-up">
             @foreach ($lessons as $lesson)
@@ -160,7 +160,7 @@
                                 <div class="feature-text">{{$lesson->name}}</div>
                             </div>
                         </div>
-                        <p>{{$lesson->courses->count()}} Tentors</p>
+                        <p>{{$lesson->courses->count()}} Tentor</p>
                     </div>
                 </div>
             </a>
@@ -175,15 +175,15 @@
     <div class="container">
         <div class="section-header aos" data-aos="fade-up">
             <div class="section-sub-head">
-                <span>What’s New</span>
-                <h2>Featured Courses</h2>
+                <span>Yang Terbaru Dari Kami</span>
+                <h2>Kursus Unggulan</h2>
             </div>
             <div class="all-btn all-category d-flex align-items-center">
-                <a href="/courses" class="btn btn-primary">All Courses</a>
+                <a href="/courses" class="btn btn-primary">Semua Kursus</a>
             </div>
         </div>
         <div class="section-text aos" data-aos="fade-up">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.</p>
+            <p class="mb-0">Temukan kursus unggulan dan mulailah belajar dengan kami, Pesan sekarang juga!</p>
         </div>
         <div class="course-feature">
             <div class="row">
@@ -246,12 +246,12 @@
             <div class="col-lg-7 col-md-12">
                 <div class="section-header aos" data-aos="fade-up">
                     <div class="section-sub-head">
-                        <span>What’s New</span>
-                        <h2>Master the skills to drive your career</h2>
+                        <span>Motivasi</span>
+                        <h2>Kuasai keterampilan untuk meningkatkan prestasi dan karier Anda</h2>
                     </div>
                 </div>
                 <div class="section-text aos" data-aos="fade-up">
-                    <p>Get certified, master modern tech skills, and level up your career — whether you’re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.</p>
+                    <p>Jangan malas untuk belajar karena ilmu adalah harta yang bisa kita bawa ke mana pun tanpa membebani kita.</p>
                 </div>
                 <div class="career-group aos" data-aos="fade-up">
                     <div class="row">
@@ -263,7 +263,7 @@
                                             <img src="{{asset('assets/img/icon/icon-1.svg')}}" alt="" class="img-fluid">
                                         </div>
                                     </div>
-                                    <p>Stay motivated with engaging instructors</p>
+                                    <p>Tetap termotivasi dengan pembelajaran yang menarik</p>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +275,7 @@
                                             <img src="{{asset('assets/img/icon/icon-2.svg')}}" alt="" class="img-fluid">
                                         </div>
                                     </div>
-                                    <p>Keep up with in the latest in cloud</p>
+                                    <p>Ikuti perkembangan terbaru</p>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,7 @@
                                             <img src="{{asset('assets/img/icon/icon-3.svg')}}" alt="" class="img-fluid">
                                         </div>
                                     </div>
-                                    <p>Get certified with 100+ certification courses</p>
+                                    <p>Proses belajar mengajar yang fleksible</p>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +299,7 @@
                                             <img src="{{asset('assets/img/icon/icon-4.svg')}}" alt="" class="img-fluid">
                                         </div>
                                     </div>
-                                    <p>Build skills your way, from labs to courses</p>
+                                    <p>Prestasi anda merupakan suatu kebanggaan untuk kami</p>
                                 </div>
                             </div>
                         </div>
@@ -321,15 +321,15 @@
     <div class="container">
         <div class="section-header aos" data-aos="fade-up">
             <div class="section-sub-head">
-                <span>What’s New</span>
-                <h2>TRENDING COURSES</h2>
+                <span>Terbaru</span>
+                <h2>KURSUS TERPOPULER</h2>
             </div>
             <div class="all-btn all-category d-flex align-items-center">
-                <a href="course-list.html" class="btn btn-primary">All Courses</a>
+                <a href="course-list.html" class="btn btn-primary">Semua Kursus</a>
             </div>
         </div>
         <div class="section-text aos" data-aos="fade-up">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.</p>
+            <p class="mb-0">Temukan kursus yang paling banyak diminati, jangan sampai kalah dengan yang lain</p>
         </div>
         <div class="owl-carousel trending-course owl-theme aos" data-aos="fade-up">
             @foreach ($courses as $course)
@@ -381,9 +381,9 @@
         <div class="feature-instructors">
             <div class="section-header aos" data-aos="fade-up">
                 <div class="section-sub-head feature-head text-center">
-                    <h2>Featured Tentor</h2>
+                    <h2>Tentor Unggulan</h2>
                     <div class="section-text aos" data-aos="fade-up">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.</p>
+                        <p class="mb-0">Tentor berpengalaman dan berkompeten, siap membantu untuk meningkatkan prestasi</p>
                     </div>
                 </div>
             </div>
@@ -418,40 +418,140 @@
     <div class="container">
         <div class="section-header aos" data-aos="fade-up">
             <div class="section-sub-head feature-head text-center">
-                <span>Trusted By</span>
-                <h2>500+ Leading Universities And Companies</h2>
+                <span>Metode Pembayaran</span>
+                <h2>Pembayaran Mudah dan Cepat</h2>
             </div>
         </div>
         <div class="lead-group aos" data-aos="fade-up">
             <div class="lead-group-slider owl-carousel owl-theme">
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-01.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/gopay.png')}}">
                     </div>
                 </div>
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-02.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/shopee.png')}}">
                     </div>
                 </div>
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-03.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/qris.png')}}">
                     </div>
                 </div>
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-04.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/visa.png')}}">
                     </div>
                 </div>
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-05.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/mastercard.png')}}">
                     </div>
                 </div>
                 <div class="item">
                     <div class="lead-img">
-                        <img class="img-fluid" alt="" src="{{asset('assets/img/lead-06.png')}}">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/jcb.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/bca.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/bni.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/briva.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/mandiri.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/permata.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/atmbersama.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/alto.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/prima.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/indomaret.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/alfamart.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/alfamidi.jpg')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/isaku.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/dandan.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/bcaklikpay.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/octo.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/brimo.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/danamon.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/uob.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/akulaku.png')}}">
+                    </div>
+                </div>							
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid" alt="" src="{{asset('assets/img/payment/kredivo.png')}}">
                     </div>
                 </div>							
             </div>
@@ -471,14 +571,14 @@
             </div>
             <div class="col-md-6 d-flex align-items-center"> 
                 <div class="join-mentor aos" data-aos="fade-up">
-                    <h2>Want to share your knowledge? Join us a Tentor</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum necessitatibus sunt explicabo! Facere magni a rem unde ducimus, dolore nemo expedita autem cupiditate explicabo dolor necessitatibus voluptatem nesciunt eos quibusdam.</p>
+                    <h2>Ingin berbagi ilmu? Bergabunglah dengan kami sebagai Tentor</h2>
+                    <p>Anda merasa jiwanya terpanggil untuk berbagi ilmu pengetahuan, mari bergabung bersama kami! Kami mengajak anda para tentor berpengalaman untuk menyalurkan ilmu serta mencerdaskan kehidupan bangsa, dan dapatkan penghasilan tambahan dari menjadi seorang tentor.</p>
                     <ul class="course-list">
-                        <li><i class="fa-solid fa-circle-check"></i>Best Courses</li>
-                        <li><i class="fa-solid fa-circle-check"></i>Top rated Tentors</li>
+                        <li><i class="fa-solid fa-circle-check"></i>Kursus Terbaik</li>
+                        <li><i class="fa-solid fa-circle-check"></i>Tentor peringkat teratas</li>
                     </ul>
                     <div class="all-btn all-category d-flex align-items-center">
-                        <a href="instructor-list.html" class="btn btn-primary">Read More</a>
+                        <a href="/register/Tentor" class="btn btn-primary">Daftar Sekarang</a>
                     </div>
                 </div>
             </div>

@@ -101,6 +101,13 @@
                                             class="form-control" placeholder="Price">
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description" rows="4" class="form-control" id="description"
+                                            placeholder="Masukan deskripsi..">{{old('description') ?? $course->description}}</textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div style="float: right">
                                 <button type="submit" class="btn btn-dark">Update</button>

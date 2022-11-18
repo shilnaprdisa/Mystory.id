@@ -60,7 +60,7 @@
                         <div class="img-logo">
                             <img src="{{config('belajarin.logo')}}" class="img-fluid" alt="Logo">
                             <div class="back-home">
-                                <a href="/">Back to Home</a>
+                                <a href="/">Kembali ke Beranda</a>
                             </div>
                         </div>
                         <h1>

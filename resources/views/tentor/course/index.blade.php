@@ -103,7 +103,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">Price</label>
-                                <input type="number" name="price" class="form-control" placeholder="Price">
+                                <input type="number" name="price" class="form-control" placeholder="Price" value="{{old('description')}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="description">Deskripsi</label>
+                                <textarea name="description" rows="4" class="form-control" id="description"
+                                    placeholder="Masukan deskripsi..">{{old('description')}}</textarea>
                             </div>
                         </div>
                     </div>

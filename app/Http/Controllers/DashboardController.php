@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function tentor(){
         $transactions = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->whereStatus('Paid')->count();
         $reviews = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->count();
-        $rating = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->sum('rating') / $reviews;
+        $rating = Review::whereIn('course_id', auth()->user()->courses->pluck('id'))->sum('rating') ?? null / $reviews;
         $last_trans = Transaction::whereIn('course_id', auth()->user()->courses->pluck('id'))->orderBy('id', 'desc')->paginate(5);
         return view('tentor.dashboard.index', compact('transactions', 'reviews', 'rating', 'last_trans'));
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('level_id')->constrained('levels');
             $table->enum('status', ['Enabled', 'Disabled', 'Deleted']);
             $table->bigInteger('price');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

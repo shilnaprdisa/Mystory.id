@@ -65,7 +65,7 @@ class SiteController extends Controller
         $tentor_reviews = Review::whereIn('course_id', $tentor_courses)->count();
         $tentor_rating = [
             'reviews' => $tentor_reviews,
-            'rating' => Review::whereIn('course_id', $tentor_courses)->sum('rating') / $tentor_reviews
+            'rating' => Review::whereIn('course_id', $tentor_courses)->sum('rating') ?? 0 / $tentor_reviews
         ];
         return view('course_detail', compact('course', 'reviews', 'tentor_rating'));
     }

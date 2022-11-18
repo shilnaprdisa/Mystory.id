@@ -30,6 +30,7 @@ class CourseSeeder extends Seeder
                         'level_id' => $level->id,
                         'status' => 'Enabled',
                         'price' => rand(1,9).'0000',
+                        'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe totam porro rem corporis molestias iusto perspiciatis voluptas repellendus, minus molestiae atque accusantium ipsum. Maiores sed dolorum expedita repudiandae adipisci?'
                     ]);
                 }
             }

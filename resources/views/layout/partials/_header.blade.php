@@ -28,7 +28,7 @@
                         @if (!auth()->user() or isRole('Student'))
 
                             <li>
-                                <a href="/" @if(request()->is('/')) style='color: #392C7D; font-weight: bold;'@endif>Home</a>
+                                <a href="/" @if(request()->is('/')) style='color: #392C7D; font-weight: bold;'@endif>Beranda</a>
                             </li>
                             <li>
                                 <a href="/courses" @if(request()->is('courses')) style='color: #392C7D; font-weight: bold;'@endif>Courses</a>
@@ -72,10 +72,10 @@
                                 <a href="/admin">Dashboard</a>
                             </li>
                             <li class="hide">
-                                <a href="/admin/lessons">Lessons</a>
+                                <a href="/admin/lessons">Pelajaran</a>
                             </li>
                             <li class="hide">
-                                <a href="/admin/levels">Classes</a>
+                                <a href="/admin/levels">Kelas</a>
                             </li>
                             <li class="hide">
                                 <a href="/admin/users">Users</a>
@@ -364,10 +364,10 @@
                 @else
                     <ul class="nav header-navbar-rht">
                         <li class="nav-item">
-                            <a class="nav-link header-sign" href="/login">Signin</a>
+                            <a class="nav-link header-sign" href="/login">Masuk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link header-login" href="/register">Signup</a>
+                            <a class="nav-link header-login" href="/register">Daftar</a>
                         </li>
                     </ul>            
                 @endif
