@@ -57,7 +57,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     // my base url
-    'autoverify_url' => env('AUTOVERIFY_URL', 'http://belajarinid.com/verify/'),
+    'autoverify_url' => env('AUTOVERIFY_URL', 'http://belajarin.id/verify/'),
     // otp key
     'otp_key' => env('OTP_KEY', '83L47AR1N1D'),
 

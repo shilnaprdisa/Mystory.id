@@ -12,8 +12,7 @@
                             <img src="{{config('belajarin.logo')}}" alt="logo">
                         </div>
                         <div class="footer-about-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>
+                            <p>Belajar Kapanpun Dan Dimanapun, ayo raih prestasimu dengan mudah bersama <a href="https://belajarin.id">Belajarin.ID</a> Temukan pengalaman belajar baru dan menyenangkan bersama tentor berpengalaman untuk meningkatkan skill dan meraih masa depan! </p>
                         </div>
                     </div>
                     <!-- /Footer Widget -->
@@ -68,15 +67,19 @@
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <img src="{{asset('assets/img/icon/icon-20.svg')}}" alt="" class="img-fluid">
-                                <p> Jl.Raya Gembong, Kedungwuni,<br> Pekalongan, 51173 </p>
+                                <p> Jl. Kenanga, Gang. Melinjo, No. 28, RT/RW: 02/02, Kelurahan Grendeng, kecamatan Purwokerto utara, Kabupten Banyumas, Jawa Tengah, kode pos 53122 </p>
                             </div>
                             <p>
-                                <img src="{{asset('assets/img/icon/icon-19.svg')}}" alt="" class="img-fluid">
-                                belajarin@example.com
+                                <a href="mailto:belajarinunsoed@gmail.com">
+                                    <img src="{{asset('assets/img/icon/icon-19.svg')}}" alt="" class="img-fluid">
+                                    belajarinunsoed@gmail.com
+                                </a>
                             </p>
                             <p class="mb-0">
-                                <img src="{{asset('assets/img/icon/icon-21.svg')}}" alt="" class="img-fluid">
-                                082158863345
+                                <a href="https://wa.me/6283103112372">
+                                    <img src="{{asset('assets/img/icon/icon-21.svg')}}" alt="" class="img-fluid">
+                                    083103112372
+                                </a>
                             </p>
                         </div>
                     </div>

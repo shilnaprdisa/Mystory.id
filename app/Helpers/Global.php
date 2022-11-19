@@ -2,6 +2,8 @@
 
 use App\Models\Notification;
 use App\Models\Setting;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 function rupiah($amount){
     return 'Rp '.number_format($amount, 0, ',', '.');
@@ -70,8 +72,38 @@ function isRole($role){
     }
     return false;
 }
-function tranStatus($id, $status, $type){
-    return view('layout.partials._transtatus', compact('id', 'status', 'type'));
+function tranStatus($transaction, $type){
+    return view('layout.partials._transtatus', compact('transaction', 'type'));
+}
+function payment($transaction){
+    if($transaction->status != 'Done' && $transaction->status != 'PaymentFailed'){
+        return redirect()->back()->with('failed', 'Status transaksi adalah'. $transaction->status. '. Pembayaran ditolak');
+    }
+    $uid = uniqid();
+    $transaction->update(['payment_code' => $uid]);
+    // Set your Merchant Server Key
+    Config::$serverKey = config('app.midtrans_server_key');
+    // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+    Config::$isProduction = false;
+    // Set sanitization on (default)
+    Config::$isSanitized = true;
+    // Set 3DS transaction for credit card to true
+    Config::$is3ds = true;
+
+    $params = array(
+        'transaction_details' => array(
+            'order_id' => $uid,
+            'gross_amount' => $transaction->total_price,
+        ),
+        'customer_details' => array(
+            'first_name' => $transaction->user->name,
+            'last_name' => '',
+            'email' => $transaction->user->email,
+            'phone' => $transaction->user->country_code.$transaction->user->phone,
+        ),
+    );
+    $snapToken = Snap::getSnapToken($params);
+    return view('layout.partials._payment', compact('snapToken'));
 }
 
 function formatPhone($phone){

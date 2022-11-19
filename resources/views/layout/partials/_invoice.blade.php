@@ -67,7 +67,7 @@
                                         <div class="col-md-12">
                                             <div class="invoice-info">
                                                 <strong class="customer-text">Status</strong>
-                                                {{tranStatus($transaction->id, $transaction->status, (isRole('Student') ? 'Student': (isRole('Tentor') ? 'Tentor' : 'Admin')))}}
+                                                {{tranStatus($transaction, (isRole('Student') ? 'Student': (isRole('Tentor') ? 'Tentor' : 'Admin')))}}
                                             </div>
                                         </div>
                                     </div>
