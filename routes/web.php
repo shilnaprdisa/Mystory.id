@@ -94,6 +94,9 @@ Route::prefix('tentor')->group(function(){
 
 Route::prefix('admin')->group(function(){
     Route::group(['middleware' => ['auth', 'CheckRoles:Super,Admin']], function () {
+
+        Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
         Route::get('', [DashboardController::class, 'admin']);
         // Route::get('withdrawals', [WithdrawalController::class, 'index']);
         // Route::post('withdrawals/update', [WithdrawalController::class, 'update']);
