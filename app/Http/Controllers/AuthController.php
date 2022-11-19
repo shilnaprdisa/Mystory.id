@@ -42,7 +42,7 @@ class AuthController extends Controller
                 'status_code' => 400,
             ], Response::HTTP_BAD_REQUEST);
         }
-        $request['status'] = 'Pending';
+        $request['status'] = ($request->role == 'Tentor') ? 'Pending' : 'Active';
         $user = User::create($request->all());
         $request->request->add(['user_id' => $user->id]);
         $address = Address::create($request->all());
