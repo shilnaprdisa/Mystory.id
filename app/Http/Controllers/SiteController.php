@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\City;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Level;
@@ -28,32 +30,66 @@ class SiteController extends Controller
             ->orderBy('total', 'desc')
             ->take(5)->pluck('course_id'))->get();
         $courses = Course::paginate(9);
-        if($request->lesson && !$request->search && !$request->level){
+        if($request->lesson && !$request->search && !$request->level && !$request->city){
             $courses = Course::whereLessonId($request->lesson)->paginate(9);
-        }elseif(!$request->lesson && $request->search && !$request->level){
+        }elseif($request->lesson && !$request->search && !$request->level && $request->city){
+            $courses = Course::whereLessonId($request->lesson)
+                ->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))
+                ->paginate(9);
+        }elseif(!$request->lesson && $request->search && !$request->level && !$request->city){
             $courses = Course::whereIn('lesson_id', Lesson::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->orWhereIn('level_id', Level::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->paginate(9);
-        }elseif($request->lesson && $request->search && !$request->level){
+        }elseif(!$request->lesson && $request->search && !$request->level && $request->city){
+            $courses = Course::whereIn('lesson_id', Lesson::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))
+                ->orWhereIn('level_id', Level::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->paginate(9);
+        }elseif($request->lesson && $request->search && !$request->level && !$request->city){
             $courses = Course::whereLessonId($request->lesson)
                 ->whereIn('level_id', Level::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->paginate(9);
-        }elseif(!$request->lesson && $request->search && $request->level){
+        }elseif($request->lesson && $request->search && !$request->level && $request->city){
+            $courses = Course::whereLessonId($request->lesson)
+                ->whereIn('level_id', Level::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))
+                ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->paginate(9);
+        }elseif(!$request->lesson && $request->search && $request->level && !$request->city){
             $courses = Course::whereLevelId($request->level)
                 ->whereIn('lesson_id', Lesson::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->paginate(9);
-        }elseif($request->lesson && $request->search && $request->level){
+        }elseif(!$request->lesson && $request->search && $request->level && $request->city){
+            $courses = Course::whereLevelId($request->level)
+                ->whereIn('lesson_id', Lesson::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))
+                ->orWhereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->paginate(9);
+        }elseif($request->lesson && $request->search && $request->level && !$request->city){
             $courses = Course::whereLevelId($request->level)
                 ->whereLessonId($request->lesson)
                 ->whereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
                 ->paginate(9);
-        }elseif(!$request->lesson && !$request->search && $request->level){
+        }elseif($request->lesson && $request->search && $request->level && $request->city){
+            $courses = Course::whereLevelId($request->level)
+                ->whereLessonId($request->lesson)
+                ->whereIn('user_id', User::where('name', 'LIKE', '%' . $request->search . '%')->pluck('id'))
+                ->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))
+                ->paginate(9);
+        }elseif(!$request->lesson && !$request->search && $request->level && !$request->city){
             $courses = Course::whereLevelId($request->level)->paginate(9);
-        }elseif($request->lesson && !$request->search && $request->level){
+        }elseif(!$request->lesson && !$request->search && $request->level && $request->city){
+            $courses = Course::whereLevelId($request->level)->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))->paginate(9);
+        }elseif($request->lesson && !$request->search && $request->level && !$request->city){
             $courses = Course::whereLevelId($request->level)->whereLessonId($request->lesson)->paginate(9);
+        }elseif($request->lesson && !$request->search && $request->level && $request->city){
+            $courses = Course::whereLevelId($request->level)->whereLessonId($request->lesson)->whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))->paginate(9);
+        }elseif(!$request->lesson && !$request->search && !$request->level && $request->city){
+            $courses = Course::whereIn('user_id', Address::whereCityId($request->city)->pluck('user_id'))->paginate(9);
         }
         // dd($courses);
         return view('course', compact('courses', 'populars', 'lessons', 'levels'));

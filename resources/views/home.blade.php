@@ -36,8 +36,8 @@
                     </form>
                     </div>
                     <div class="trust-user">
-                        <p>Diminati lebih dari 15K <br> Pengguna seluruh Indonesia sejak 2022</p>
-                        <div class="trust-rating d-flex align-items-center">
+                        <p>Nikmati sensasi belajar yang menyenangkan dengan tentor berpengalaman</p>
+                        {{-- <div class="trust-rating d-flex align-items-center">
                             <div class="rate-head">
                                 <h2><span>1000</span>+</h2>
                             </div>
@@ -49,7 +49,7 @@
                                 <i class="fas fa-star filled"></i>
                                 <i class="fas fa-star filled"></i>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

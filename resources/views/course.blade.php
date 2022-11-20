@@ -33,7 +33,7 @@
 				<!-- Filter -->
 				<div class="showing-list">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-4">
 							<div class="d-flex align-items-center">
 								<div class="view-icons">
 									<a href="#!" class="grid-view active"><i class="feather-grid"></i></a>
@@ -44,17 +44,34 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6">	
+						<div class="col-lg-8">	
 							<div class="show-filter add-course-info">
 								<form action="" method="GET" id="formSearch">
 									<input type="hidden" name="lesson" value="{{request('lesson')}}" id="lesson">
 									<input type="hidden" name="level" value="{{request('level')}}" id="level">
 									<div class="row gx-2 align-items-center">	
-										<div class="col-md-12 col-item">
+										<div class="col-md-4 col-item">
 											<div class=" search-group">
 												<i class="feather-search"></i>
 												<input type="text" name="search" value="{{request('search')}}" class="form-control" placeholder="Search our courses" >
 											</div>
+										</div>
+										<div class="col-md-3 col-item">	
+											<div class="search-group">
+												<select class="form-select select" name="province" id="province">
+												</select>
+											</div>										
+										</div>
+										<div class="col-md-3 col-item">		
+											<div class="search-group">
+												<img src="{{config('belajarin.loading')}}" alt="BelajarinId" width="35" id="loadcity" style="display:none;">												
+												<select class="form-select select" name="city" id="city">
+													<option value="">Kota</option>
+												</select>
+											</div>									
+										</div>
+										<div class="col-md-2 col-item">											
+											<button type="submit" class="btn btn-warning text-white"><i class="fas fa-search"></i></button>
 										</div>
 									</div>
 								</form>
@@ -111,7 +128,10 @@
 						</div>						
 					@endforeach
 				</div>
-                {{pagi($courses->currentPage(), $courses->lastPage(), ['search' => request('search'), 'lesson' => request('lesson')])}}
+                {{pagi($courses->currentPage(), $courses->lastPage(), [
+					'search' => request('search'), 'lesson' => request('lesson'),
+					'province' => request('province'), 'city' => request('city')
+					])}}
 				
 			</div>
 			<div class="col-lg-3">
@@ -212,6 +232,66 @@
 		$("input[type='radio'][name='level']").on('change', function(){
 			searchForm()
 		})
+
+		//kota
+		getProvince();
+
+        $('#province').on('change', function () {
+            getCity();
+        });
+
+		function getProvince() {
+			$.ajax({
+				url: '/getProvinces',
+				type: "GET",
+				dataType: "json",
+				success: function (data) {
+					let oldProvince = {!! request('province') !!}
+					$('#province').empty();
+					$('#province').append('<option value="">Provinsi</option>');
+					$.each(data, function (key, value) {
+						if (key == oldProvince) {
+							$('#province').append('<option value="' + key + '" selected>' +
+								value + '</option>');
+						} else {
+							$('#province').append('<option value="' + key + '">' + value +
+								'</option>');
+						}
+					});
+					$('#loadprovince').hide();
+					getCity();
+				}
+			});
+		}
+
+		function getCity() {
+			let province_id = $('#province').val();
+			if (province_id) {
+				$('#loadcity').show();
+				$.ajax({
+					url: '/getCities/' + province_id,
+					type: "GET",
+					dataType: "json",
+					success: function (data) {
+						let oldCity = {!! request('city') !!}
+						$('#city').empty();
+						$.each(data, function (key, value) {
+							if (key == oldCity) {
+								$('#city').append('<option value="' + key + '" selected>' +
+									value + '</option>');
+							} else {
+								$('#city').append('<option value="' + key + '">' + value +
+									'</option>');
+							}
+						});
+						$('#loadcity').hide();
+					}
+				});
+			} else {
+				$('#city').empty();
+				$('#city').append('<option value="">Kota</option>');
+			}
+		}
 	});
 
 	function searchForm(){
