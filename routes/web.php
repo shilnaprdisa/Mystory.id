@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth', 'CheckRoles:Student,Tentor,Admin,Super']]
     
     Route::get('/profile', [SettingController::class, 'profile']);
     Route::post('/updateProfile', [SettingController::class, 'updateProfile']);
+    Route::post('/updatePP', [SettingController::class, 'updatePP']);
     Route::get('/setting', [SettingController::class, 'index']);
     Route::post('/updatePassword', [SettingController::class, 'updatePassword']);
     Route::get('/logout', [AuthController::class, 'logout']);

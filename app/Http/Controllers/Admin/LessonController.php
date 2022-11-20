@@ -15,9 +15,13 @@ class LessonController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'name' => 'required|max:255|unique:lessons'
+            'name' => 'required|max:255|unique:lessons',
+            'image' => 'mimes:jpg,png,jpeg,gif'
         ]);
-        $lesson = Lesson::create($request->all());
+        $lesson = Lesson::create($request->except('image'));     
+        if($request->hasFile('image')){
+            $lesson->addMediaFromRequest('image')->toMediaCollection('lessons');
+        }
         return redirect()->back()->with('success', 'Data berhasil ditambahkan.');
     }
 }

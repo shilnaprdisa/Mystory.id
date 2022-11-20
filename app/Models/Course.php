@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Course extends Model
+class Course extends Model implements HasMedia
 {
-    use HasFactory;    
+    use HasFactory, InteractsWithMedia;    
     protected $guarded = [];
 
     public function reviews(){
@@ -24,5 +26,9 @@ class Course extends Model
     }
     public function level(){
         return $this->belongsTo(Level::class);
+    }
+
+    public function getImage(){
+        return ($this->getFirstMediaUrl('courses')) ? $this->getFirstMediaUrl('courses') : asset('assets/img/course/course-01.jpg');
     }
 }

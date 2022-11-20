@@ -154,7 +154,7 @@
                     <div class="feature-bg" >					
                         <div class="feature-header">
                             <div class="feature-icon">
-                                <img src="{{asset('assets/img/categories-icon.png')}}" alt="">
+                                <img src="{{$lesson->getImage()}}" alt="">
                             </div>		
                             <div class="feature-cont">	
                                 <div class="feature-text">{{$lesson->name}}</div>
@@ -193,7 +193,7 @@
                             <div class="product">
                                 <div class="product-img">
                                     <a href="/courses/{{$course->id}}">
-                                        <img class="img-fluid" alt="" src="{{asset('assets/img/course/course-01.jpg')}}">
+                                        <img class="img-fluid" alt="" src="{{$course->getImage()}}">
                                     </a>
                                     <div class="price">
                                         <h3>{{rupiah($course->price)}}</h3>
@@ -202,7 +202,7 @@
                                 <div class="product-content">
                                     <div class="course-group d-flex">
                                         <div class="course-group-img d-flex">
-                                            <a href="instructor-profile.html"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="" class="img-fluid"></a>
+                                            <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid"></a>
                                             <div class="course-name">
                                                 <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
                                                 <p>{{$course->user->role}}</p>
@@ -337,7 +337,7 @@
                     <div class="product trend-product">
                         <div class="product-img">
                             <a href="/courses/{{$course->id}}">
-                                <img class="img-fluid" alt="" src="{{asset('assets/img/course/course-07.jpg')}}">
+                                <img class="img-fluid" alt="" src="{{$course->getImage()}}">
                             </a>
                             <div class="price">
                                 <h3>{{rupiah($course->price)}}</h3>
@@ -346,7 +346,7 @@
                         <div class="product-content">
                             <div class="course-group d-flex">
                                 <div class="course-group-img d-flex">
-                                    <a href="instructor-profile.html"><img src="{{asset('assets/img/user/user.jpg')}}" alt="" class="img-fluid"></a>
+                                    <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid"></a>
                                     <div class="course-name">
                                         <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
                                         <p>{{$course->user->role}}</p>
@@ -392,7 +392,7 @@
                     <div class="instructors-widget">
                         <div class="instructors-img ">
                             <a href="instructor-list.html">
-                                <img class="img-fluid" alt="" src="{{asset('assets/img/user/user7.jpg')}}">
+                                <img class="img-fluid" alt="" src="{{$tentor->getImage()}}">
                             </a>
                         </div>
                         <div class="instructors-content text-center">

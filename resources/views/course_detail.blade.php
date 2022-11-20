@@ -13,7 +13,7 @@
                 <div class="instructor-wrap border-bottom-0 m-0">
                     <div class="about-instructor align-items-center">
                         <div class="abt-instructor-img">
-                            <a href="#!"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="img" class="img-fluid"></a>
+                            <a href="#!"><img src="{{$course->user->getImage()}}" alt="img" class="img-fluid"></a>
                         </div>
                         <div class="instructor-detail me-3">
                             <h5>
@@ -77,7 +77,7 @@
                         <div class="instructor-wrap">
                             <div class="about-instructor">
                                 <div class="abt-instructor-img">
-                                    <a href="instructor-profile.html"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="img"
+                                    <a href="instructor-profile.html"><img src="{{$course->getImage()}}" alt="img"
                                             class="img-fluid"></a>
                                 </div>
                                 <div class="instructor-detail">
@@ -163,7 +163,7 @@
                             <div class="instructor-wrap">
                                 <div class="about-instructor">
                                     <div class="abt-instructor-img">
-                                        <a href="#!"><img src="{{asset('assets/img/user/user1.jpg')}}"
+                                        <a href="#!"><img src="{{$review->user->getImage()}}"
                                                 alt="img" class="img-fluid"></a>
                                     </div>
                                     <div class="instructor-detail">

@@ -64,6 +64,15 @@ class SettingController extends Controller
         $user->address->update($request->all());
         return redirect()->back()->with('success', 'Data Updated Successfuly');
     }
+    public function updatePP(Request $request){
+        $this->validate($request, ['profile_picture' => 'required|mimes:jpg,png,jpeg,gif']);
+        $user = User::Find(auth()->user()->id);
+        if($request->hasFile('profile_picture')){
+            $user->clearMediaCollection('users');
+            $user->addMediaFromRequest('profile_picture')->toMediaCollection('users');
+        }
+        return redirect()->back()->with('success', 'Foto Profile berhasil diperbarui');
+    }
     public function TransFee(Request $request){
         $this->validate($request, [
             'TransFee' => 'required|max:200000000|numeric',

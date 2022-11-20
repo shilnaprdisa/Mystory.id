@@ -12,6 +12,9 @@
             <div class="col-lg-12">
                 <div class="instructor-wrap border-bottom-0 m-0">
                     <div class="about-instructor align-items-center">
+                        <div class="abt-instructor-img">
+                            <a href="instructor-profile.html"><img src="{{$course->getImage()}}" alt="img" class="img-fluid"></a>
+                        </div>
                         <div class="instructor-detail me-3">
                             <h5>
                                 <a href="#!">{{$course->lesson->name}}</a>
@@ -55,7 +58,7 @@
                 <div class="card overview-sec">
                     <div class="card-body">
                         <h5 class="subs-title">Course Details</h5>
-                        <form action="/tentor/courses/{{$course->id}}" method="post">
+                        <form action="/tentor/courses/{{$course->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -101,11 +104,21 @@
                                             class="form-control" placeholder="Price">
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="description">Deskripsi</label>
                                         <textarea name="description" rows="4" class="form-control" id="description"
                                             placeholder="Masukan deskripsi..">{{old('description') ?? $course->description}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">                                
+                                        <label for="image">Gambar</label> <br>
+                                        <input type="file" class="mb-2" name="image" id="image"> <br>
+                                        <small class="text-danger">
+                                            @if ($errors->has('image')) {{$errors->first('image')}} @endif                                                         
+                                        </small> <br>
+                                        <small>direkomendasikan ukuran 271 X 203</small>
                                     </div>
                                 </div>
                             </div>

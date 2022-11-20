@@ -24,7 +24,7 @@
                         <div class="instructor-grid">
                             <div class="product-img">
                                 <a href="/tentor/courses/{{$course->id}}">
-                                    <img src="{{asset('assets/img/course/course-10.jpg')}}" class="img-fluid" alt="">
+                                    <img src="{{$course->getImage()}}" class="img-fluid" alt="">
                                 </a>
                             </div>
                             <div class="instructor-product-content">
@@ -61,7 +61,7 @@
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/tentor/courses" method="post">
+            <form action="/tentor/courses" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                 <input type="hidden" name="force" value="0">
@@ -106,11 +106,21 @@
                                 <input type="number" name="price" class="form-control" placeholder="Price" value="{{old('description')}}">
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="description">Deskripsi</label>
                                 <textarea name="description" rows="4" class="form-control" id="description"
                                     placeholder="Masukan deskripsi..">{{old('description')}}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">                                
+                                <label for="image">Gambar</label>
+                                <input type="file" class="mb-2" name="image" id="image">
+                                <small class="text-danger">
+                                    @if ($errors->has('image')) {{$errors->first('image')}} @endif                                                         
+                                </small>
+                                <small>direkomendasikan ukuran 369 X 271</small>
                             </div>
                         </div>
                     </div>

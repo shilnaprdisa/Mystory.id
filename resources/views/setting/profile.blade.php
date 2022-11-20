@@ -48,17 +48,20 @@
 									</div>
 									<div class="course-group mb-0 d-flex">
 										<div class="course-group-img d-flex align-items-center">
-											<a href="instructor-profile.html"><img src="assets/img/user/user11.jpg" alt="" class="img-fluid"></a>
+											<a href="instructor-profile.html"><img src="{{auth()->user()->getImage()}}" alt="" class="img-fluid"></a>
 											<div class="course-name">
 												<h4><a href="instructor-profile.html">Your avatar</a></h4>
 												<p>PNG or JPG no bigger than 800px wide and tall.</p>
 											</div>
 										</div>
 										<div class="profile-share d-flex align-items-center justify-content-center">
-											<form action="#!" method="post" enctype="multipart/form-data">
+											<form action="/updatePP" method="post" enctype="multipart/form-data">
 												@csrf
 												<input type="file" class="mb-2" name="profile_picture">
-												<button type="button" class="btn btn-success mb-2">Upload</button>
+												<small class="text-danger">
+													@if ($errors->has('profile_picture')) {{$errors->first('profile_picture')}} @endif                                                         
+												</small>
+												<button type="submit" class="btn btn-success mb-2">Upload</button>
 											</form>
 										</div>
 									</div>

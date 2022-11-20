@@ -60,7 +60,7 @@
                                 <div class="col-lg-6">
                                     <div class="student-img">
                                         <a href="/admin/users/{{$user->id}}">
-                                            <img class="img-fluid" alt="Students Info" src="{{asset('assets/img/user/user1.jpg')}}">
+                                            <img class="img-fluid" alt="Students Info" src="{{$user->getImage()}}">
                                         </a>
                                     </div>
                                 </div>

@@ -71,7 +71,7 @@
 								<div class="product">
 									<div class="product-img">
 										<a href="/courses/{{$course->id}}">
-											<img class="img-fluid" alt="" src="{{asset('assets/img/course/course-10.jpg')}}">
+											<img class="img-fluid" alt="" src="{{$course->getImage()}}">
 										</a>
 										<div class="price">
 											<h3>{{rupiah($course->price)}}</h3>
@@ -176,7 +176,7 @@
 									<li>
 										<div class="post-thumb">
 											<a href="/courses/{{$popular->id}}">
-												<img class="img-fluid" src="{{asset('assets/img/blog/blog-01.jpg')}}" alt="">
+												<img class="img-fluid" src="{{$popular->getImage()}}" alt="">
 											</a>
 										</div>
 										<div class="post-info free-color">

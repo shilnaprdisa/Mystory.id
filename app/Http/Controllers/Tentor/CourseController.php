@@ -25,8 +25,12 @@ class CourseController extends Controller
             'status' => 'required|max:20',
             'price' => 'required|max:200000000|numeric',
             'force' => 'required|max:1|numeric',
+            'image' => 'mimes:jpg,png,jpeg,gif'
         ]);
-        $course = Course::create($request->except('force'));
+        $course = Course::create($request->except('force', 'image'));        
+        if($request->hasFile('image')){
+            $course->addMediaFromRequest('image')->toMediaCollection('courses');
+        }
         return redirect()->back()->with('success', 'Data berhasil ditambahkan.');
     }
     public function show($id){
@@ -42,10 +46,14 @@ class CourseController extends Controller
             'level_id' => 'required|max:200000000|numeric',
             'status' => 'required|max:20',
             'price' => 'required|max:200000000|numeric',
+            'image' => 'mimes:jpg,png,jpeg,gif'
         ]);
         $course = Course::find($id);
-        $course->update($request->all());
-        // Course::whereId($id)->update($request->all());
+        $course->update($request->except('image'));        
+        if($request->hasFile('image')){
+            $course->clearMediaCollection('courses');
+            $course->addMediaFromRequest('image')->toMediaCollection('courses');
+        }
         return redirect()->back()->with('success', 'Data berhasil di update.');
     }
 }

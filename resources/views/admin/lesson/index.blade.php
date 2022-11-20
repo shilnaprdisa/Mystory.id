@@ -56,6 +56,7 @@
                                         <table class="table table-nowrap mb-2">
                                             <thead>
                                                 <tr>
+                                                    <th>GAMBAR</th>
                                                     <th>LESSONS</th>
                                                     <th>USED</th>
                                                     <th>ACTION</th>
@@ -64,6 +65,15 @@
                                             <tbody>
                                                 @foreach ($lessons as $lesson)
                                                     <tr>
+                                                        <td>
+                                                            <div class="sell-table-group d-flex align-items-center">
+                                                                <div class="sell-group-img">
+                                                                    <a href="course-details.html">
+                                                                        <img src="{{$lesson->getImage()}}" class="img-fluid " alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
@@ -107,12 +117,20 @@
                 <h5 class="modal-title" id="addLessonModalLabel">Add New Lesson</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/lessons" method="post">
+            <form action="/admin/lessons" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-control-label">Lesson Name</label>
                         <input type="text" name="name" class="form-control" placeholder="Enter lesson name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Gambar</label>
+                        <input type="file" name="image">
+                        <small class="text-danger">
+                            @if ($errors->has('image')) {{$errors->first('image')}} @endif                                                         
+                        </small>
+                        <small>direkomendasikan ukuran 271 X 203</small>
                     </div>
                 </div>
                 <div class="modal-footer">

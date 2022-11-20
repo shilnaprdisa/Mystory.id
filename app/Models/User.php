@@ -9,10 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable,Sluggable;
+    use HasApiTokens, HasFactory, Notifiable,Sluggable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -94,5 +96,9 @@ class User extends Authenticatable
                 'source' => 'username'
             ]
         ];
+    }
+
+    public function getImage(){
+        return ($this->getFirstMediaUrl('users')) ? $this->getFirstMediaUrl('users') : asset('assets/img/user/user11.jpg');
     }
 }
