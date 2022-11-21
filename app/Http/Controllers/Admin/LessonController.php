@@ -24,4 +24,25 @@ class LessonController extends Controller
         }
         return redirect()->back()->with('success', 'Data berhasil ditambahkan.');
     }
+    public function edit($id){
+        $lesson = Lesson::find($id);
+        return view('admin.lesson.edit', compact('lesson'));
+    }
+    public function update(Request $request,$id){        
+        $name = 'required|max:255|unique:lessons';        
+        if($request->old_name == $request->name){
+            $name = 'max:255|unique:lessons';   
+        }
+        $this->validate($request, [
+            'name' => $name,
+            'image' => 'mimes:jpg,png,jpeg,gif'
+        ]);
+        $lesson = Lesson::find($id);            
+        if($request->hasFile('image')){
+            $lesson->clearMediaCollection('lessons');
+            $lesson->addMediaFromRequest('image')->toMediaCollection('lessons');
+        }
+        $lesson->update($request->only('name'));
+        return redirect()->back()->with('success', 'Data berhasil diupdate.');
+    }
 }

@@ -84,8 +84,7 @@
                                                         <td>{{$lesson->courses->count()}}</td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-success">Edit</button>
+                                                                <a href="/admin/lessons/{{$lesson->id}}/edit" class="btn btn-sm btn-success">Edit</a>
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-danger">Delete</button>
                                                             </div>
