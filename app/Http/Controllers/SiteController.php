@@ -17,7 +17,7 @@ class SiteController extends Controller
 {
     public function index(){
         $lessons = Lesson::all();
-        $tentors = User::whereRole('Tentor')->paginate(9);
+        $tentors = User::whereRole('Tentor')->whereStatus('Active')->paginate(9);
         $courses = Course::whereStatus('Enabled')->paginate(9);
         $students = User::whereRole('Student')->count();
         return view('home', compact('lessons', 'tentors', 'courses', 'students'));
