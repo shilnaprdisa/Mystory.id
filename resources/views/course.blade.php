@@ -100,7 +100,7 @@
 												<a href="instructor-profile.html"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="" class="img-fluid"></a>
 												<div class="course-name">
 													<h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
-													<p>{{$course->user->role}}</p>
+													<p>{{$course->user->address->city->name}}</p>
 												</div>
 											</div>
 											<div class="course-share d-flex align-items-center justify-content-center">
@@ -119,7 +119,7 @@
 											</div>
 										</div>
 										{{rating($course->reviews->count(), $course->reviews->sum('rating'))}}
-										<div class="all-btn all-category d-flex align-items-center">
+										<div class="all-btn all-category d-flex align-items-center mt-2">
 											<a href="/courses/{{$course->id}}" class="btn btn-primary">Pesan Sekarang</a>
 										</div>
 									</div>
