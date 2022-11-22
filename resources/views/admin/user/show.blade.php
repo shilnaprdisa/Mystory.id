@@ -60,7 +60,7 @@
                                 <div class="col-lg-6">
                                     <div class="student-img">
                                         <a href="/admin/users/{{$user->id}}">
-                                            <img class="img-fluid" alt="Students Info" src="{{$user->getImage()}}">
+                                            <img class="img-fluid" alt="Students Info" src="{{$user->getImage()}}"  style="width:300px; height: 200px;">
                                         </a>
                                     </div>
                                 </div>

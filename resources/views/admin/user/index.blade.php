@@ -55,36 +55,40 @@
                         </div>
                         @foreach ($users as $user)                            
                             <div class="col-xl-4 col-lg-6 col-md-6 d-flex">
-                                <div class="student-box flex-fill">
-                                    <div class="student-box-blks">
-                                        <div class="student-img">
-                                            <a href="/admin/users/{{$user->id}}">
-                                                <img class="img-fluid" alt="Students Info" src="{{$user->getImage()}}">
-                                            </a>
-                                        </div>
-                                        <div class="student-content pb-0">
-                                            <h5><a href="/admin/users/{{$user->id}}">{{$user->name}}</a></h5>
-                                            <div class="loc-blk d-flex align-items-center justify-content-center">                                                
-                                                <p>{{$user->role}}</p>
+                                <div class="student-box flex-fill">                                    
+                                    <a href="/admin/users/{{$user->id}}">
+                                        <div class="student-box-blks">
+                                            <div class="student-img">
+                                                <img class="img-fluid" alt="Students Info" src="{{$user->getImage()}}" style="width:100px; height: 100px">
+                                                {{-- <a href="/admin/users/{{$user->id}}">
+                                                </a> --}}
+                                            </div>
+                                            <div class="student-content pb-0">
+                                                    <h5>{{$user->name}}</h5>
+                                                    <div class="loc-blk d-flex align-items-center justify-content-center">                                                
+                                                        <p>{{$user->role}}</p>
+                                                    </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="enrol-student-foot">
-                                        <ul>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-9">
-                                                        Enrolled {{tanggal($user->created_at)}}
+                                        <a href="/admin/users/{{$user->id}}">
+                                            <ul>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-9">
+                                                            Enrolled {{tanggal($user->created_at)}}
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <span class="badge rounded-pill bg-{{($user->status == 'Active') ? 'primary' : ($user->status == 'Pending' ? 'warning' : ($user->status == 'Banned' ? 'dark' : 'danger'))}}">
+                                                                {{$user->status}}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-2">
-                                                        <span class="badge rounded-pill bg-{{($user->status == 'Active') ? 'primary' : ($user->status == 'Pending' ? 'warning' : ($user->status == 'Banned' ? 'dark' : 'danger'))}}">
-                                                            {{$user->status}}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li><i class="feather-map-pin me-2"></i>{{$user->address->city->name}}</li>
-                                        </ul>
+                                                </li>
+                                                <li><i class="feather-map-pin me-2"></i>{{$user->address->city->name}}</li>
+                                            </ul>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

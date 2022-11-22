@@ -104,7 +104,7 @@
                                     <img src="{{asset('assets/img/certificate-icon.svg')}}" alt="">
                                 </div>
                                 <div class="course-inner-content">
-                                    <h4><span>{{$tentors->total()}}</span></h4>
+                                    <h4><span>{{$courses->total()}}</span></h4>
                                     <p>Kursus</p>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                     <div class="feature-bg" >					
                         <div class="feature-header">
                             <div class="feature-icon">
-                                <img src="{{$lesson->getImage()}}" alt="">
+                                <img src="{{$lesson->getImage()}}" style="width: 300px; height: 100px" alt="">
                             </div>		
                             <div class="feature-cont">	
                                 <div class="feature-text">{{$lesson->name}}</div>
@@ -202,7 +202,7 @@
                                 <div class="product-content">
                                     <div class="course-group d-flex">
                                         <div class="course-group-img d-flex">
-                                            <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid"></a>
+                                            <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px; height:50px"></a>
                                             <div class="course-name">
                                                 <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
                                                 <p>{{$course->user->role}}</p>
@@ -346,7 +346,7 @@
                         <div class="product-content">
                             <div class="course-group d-flex">
                                 <div class="course-group-img d-flex">
-                                    <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid"></a>
+                                    <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px;height:50px"></a>
                                     <div class="course-name">
                                         <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
                                         <p>{{$course->user->role}}</p>
@@ -392,7 +392,7 @@
                     <div class="instructors-widget">
                         <div class="instructors-img ">
                             <a href="instructor-list.html">
-                                <img class="img-fluid" alt="" src="{{$tentor->getImage()}}">
+                                <img class="img-fluid"  style="height: 300px" alt="" src="{{$tentor->getImage()}}">
                             </a>
                         </div>
                         <div class="instructors-content text-center">

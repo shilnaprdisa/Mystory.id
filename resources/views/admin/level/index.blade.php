@@ -67,21 +67,20 @@
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$level->number}}</a></p>
+                                                                    <p><a href="/admin/levels/{{$level->id}}/edit">{{$level->number}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-tabel-info">
-                                                                    <p><a href="#!">{{$level->name}}</a></p>
+                                                                    <p><a href="/admin/levels/{{$level->id}}/edit">{{$level->name}}</a></p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="profile-share d-flex ">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-success">Edit</button>
+                                                                <a href="/admin/levels/{{$level->id}}/edit" class="btn btn-sm btn-success">Edit</a>
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-danger">Delete</button>
                                                             </div>

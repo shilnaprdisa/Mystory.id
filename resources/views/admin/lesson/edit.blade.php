@@ -22,12 +22,13 @@
                         {{Session::get('success')}}
                     </div>                    
                 @endif
+                <a href="/admin/lessons"><i class="fa fa-arrow-left mb-2"></i> Back</a>
                 <div class="card overview-sec">
                     <div class="card-body">
                         <h5 class="subs-title">Edit Lesson</h5>
                         <div class="row">
                             <div class="col-lg-4 mb-3">
-                                <img src="{{$lesson->getImage()}}" style="width: 250px" alt="">
+                                <img src="{{$lesson->getImage()}}" style="width: 250px; height:150px" alt="">
                             </div>
                             <div class="col-lg-8">
                                 <form action="/admin/lessons/{{$lesson->id}}" method="post" enctype="multipart/form-data">

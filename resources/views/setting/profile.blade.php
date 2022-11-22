@@ -48,7 +48,7 @@
 									</div>
 									<div class="course-group mb-0 d-flex">
 										<div class="course-group-img d-flex align-items-center">
-											<a href="instructor-profile.html"><img src="{{auth()->user()->getImage()}}" alt="" class="img-fluid"></a>
+											<a href="instructor-profile.html"><img src="{{auth()->user()->getImage()}}" style="width:100px; height: 100px" alt="" class="img-fluid"></a>
 											<div class="course-name">
 												<h4><a href="instructor-profile.html">Your avatar</a></h4>
 												<p>PNG or JPG no bigger than 800px wide and tall.</p>

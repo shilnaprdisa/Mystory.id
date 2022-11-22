@@ -69,7 +69,7 @@
                                                             <div class="sell-table-group d-flex align-items-center">
                                                                 <div class="sell-group-img">
                                                                     <a href="course-details.html">
-                                                                        <img src="{{$lesson->getImage()}}" class="img-fluid " alt="">
+                                                                        <img src="{{$lesson->getImage()}}" style="width: 300px; height: 100px" class="img-fluid " alt="">
                                                                     </a>
                                                                 </div>
                                                             </div>

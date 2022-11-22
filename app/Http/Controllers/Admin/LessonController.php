@@ -31,7 +31,7 @@ class LessonController extends Controller
     public function update(Request $request,$id){        
         $name = 'required|max:255|unique:lessons';        
         if($request->old_name == $request->name){
-            $name = 'max:255|unique:lessons';   
+            $name = 'required|max:255';   
         }
         $this->validate($request, [
             'name' => $name,
