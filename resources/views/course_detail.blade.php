@@ -13,15 +13,15 @@
                 <div class="instructor-wrap border-bottom-0 m-0">
                     <div class="about-instructor align-items-center">
                         <div class="abt-instructor-img">
-                            <a href="#!"><img src="{{$course->user->getImage()}}" alt="img" class="img-fluid"></a>
+                            <a href="/user/{{$course->user->username}}"><img src="{{$course->user->getImage()}}" alt="img" class="img-fluid"></a>
                         </div>
                         <div class="instructor-detail me-3">
                             <h5>
-                                <a href="#!">{{$course->user->name}}</a>
+                                <a href="/user/{{$course->user->username}}">{{$course->user->name}}</a>
                             </h5>
                             <p>{{$course->user->role}}</p>
                         </div>
-                        {{rating($tentor_rating['reviews'], $tentor_rating['rating'])}}
+                        {{rating($tentor_reviews, $tentor_rating / $tentor_reviews)}}
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">

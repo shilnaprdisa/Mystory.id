@@ -99,14 +99,21 @@ class SiteController extends Controller
         $reviews = Review::whereCourseId($id)->paginate(5);
         $tentor_courses = Course::whereUserId($course->user_id)->pluck('id');
         $tentor_reviews = Review::whereIn('course_id', $tentor_courses)->count();
-        $tentor_rating = [
-            'reviews' => $tentor_reviews,
-            'rating' => Review::whereIn('course_id', $tentor_courses)->sum('rating') ?? 0 / $tentor_reviews
-        ];
-        return view('course_detail', compact('course', 'reviews', 'tentor_rating'));
+        $tentor_rating = Review::whereIn('course_id', $tentor_courses)->sum('rating') ?? 0;
+        return view('course_detail', compact('course', 'reviews', 'tentor_reviews', 'tentor_rating'));
     }
     public function invoice($id){
         $transaction = Transaction::find($id);
         return view('invoice', compact('transaction'));
+    }
+    public function user($username){
+        $user = User::whereUsername($username)->first();
+        if($user->role != 'Tentor'){
+            return redirect()->back();
+        }
+        $tentor_courses = Course::whereUserId($user->id)->pluck('id');
+        $tentor_reviews = Review::whereIn('course_id', $tentor_courses)->count();
+        $tentor_rating = Review::whereIn('course_id', $tentor_courses)->sum('rating') ?? 0;
+        return view('user', compact('user', 'tentor_reviews', 'tentor_rating'));
     }
 }

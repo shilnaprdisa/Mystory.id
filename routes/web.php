@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/courses', [SiteController::class, 'courses']);
 Route::get('/courses/{id}', [SiteController::class, 'detail']);
+Route::get('/user/{username}', [SiteController::class, 'user']);
 
 Route::get('/getProvinces', [AddressController::class, 'getProvinces']);
 Route::get('/getCities/{province_id}', [AddressController::class, 'getCities']);

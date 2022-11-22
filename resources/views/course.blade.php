@@ -97,9 +97,9 @@
 									<div class="product-content">
 										<div class="course-group d-flex">
 											<div class="course-group-img d-flex">
-												<a href="instructor-profile.html"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="" class="img-fluid"></a>
+												<a href="/user/{{$course->user->username}}"><img src="{{asset('assets/img/user/user1.jpg')}}" alt="" class="img-fluid"></a>
 												<div class="course-name">
-													<h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
+													<h4><a href="/user/{{$course->user->username}}">{{$course->user->name}}</a></h4>
 													<p>{{$course->user->address->city->name}}</p>
 												</div>
 											</div>

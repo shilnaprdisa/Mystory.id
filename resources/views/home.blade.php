@@ -202,9 +202,9 @@
                                 <div class="product-content">
                                     <div class="course-group d-flex">
                                         <div class="course-group-img d-flex">
-                                            <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px; height:50px"></a>
+                                            <a href="/user/{{$course->user->username}}"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px; height:50px"></a>
                                             <div class="course-name">
-                                                <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
+                                                <h4><a href="/user/{{$course->user->username}}">{{$course->user->name}}</a></h4>
                                                 <p>{{$course->user->role}}</p>
                                             </div>
                                         </div>
@@ -346,9 +346,9 @@
                         <div class="product-content">
                             <div class="course-group d-flex">
                                 <div class="course-group-img d-flex">
-                                    <a href="instructor-profile.html"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px;height:50px"></a>
+                                    <a href="/user/{{$course->user->username}}"><img src="{{$course->user->getImage()}}" alt="" class="img-fluid" style="width: 50px;height:50px"></a>
                                     <div class="course-name">
-                                        <h4><a href="instructor-profile.html">{{$course->user->name}}</a></h4>
+                                        <h4><a href="/user/{{$course->user->username}}">{{$course->user->name}}</a></h4>
                                         <p>{{$course->user->role}}</p>
                                     </div>
                                 </div>
@@ -391,12 +391,12 @@
                 @foreach ($tentors as $tentor)
                     <div class="instructors-widget">
                         <div class="instructors-img ">
-                            <a href="instructor-list.html">
+                            <a href="/user/{{$tentor->username}}">
                                 <img class="img-fluid"  style="height: 300px" alt="" src="{{$tentor->getImage()}}">
                             </a>
                         </div>
                         <div class="instructors-content text-center">
-                            <h5><a href="instructor-profile.html">{{$tentor->name}}</a></h5>
+                            <h5><a href="/user/{{$tentor->username}}">{{$tentor->name}}</a></h5>
                             <p>{{$tentor->role}}</p>
                             <div class="student-count d-flex justify-content-center">
                                 <i class="fa-solid fa-book"></i>
