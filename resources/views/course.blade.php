@@ -155,7 +155,7 @@
 									<div>
 										<label class="custom_check custom_one">
 											<input type="radio" value="{{$lesson->id}}" @if($lesson->id == request('lesson')) checked @endif name="lesson" >
-											<span class="checkmark"></span> {{$lesson->name}} ({{$lesson->courses->count()}})
+											<span class="checkmark"></span> {{$lesson->name}} ({{$lesson->courses->where('status', 'Enabled')->count()}})
 										</label>
 									</div>									
 								@endforeach
@@ -176,7 +176,7 @@
 									<div>
 										<label class="custom_check">
 											<input type="radio" value="{{$level->id}}" @if($level->id == request('level')) checked @endif name="level" >
-											<span class="checkmark"></span> {{$level->name}} ({{$level->courses->count()}})
+											<span class="checkmark"></span> {{$level->name}} ({{$level->courses->where('status', 'Enabled')->count()}})
 										</label>
 									</div>									
 								@endforeach
