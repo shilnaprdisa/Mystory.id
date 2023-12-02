@@ -49,6 +49,29 @@
 
     {{-- modal --}}
     {{-- @include('layout.partials._modal') --}}
+    
+    <!-- Modal Delete-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post" id="deleteForm">
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" value="" name="id">
+                    <div class="modal-body">
+                        <p>Yakin ingin menghapus data?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
@@ -63,6 +86,13 @@
 
     <!-- Custom JS -->
     <script src="{{asset('assets/js/script.js')}}"></script>
+    <script>
+        function deleteConfirm(url){
+            alert('aaa')
+            $('#deleteForm').action('action', url);
+            $('#deleteModal').modal();
+        }
+    </script>
 
 </body>
 

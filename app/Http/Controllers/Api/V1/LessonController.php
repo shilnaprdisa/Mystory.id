@@ -43,7 +43,6 @@ class LessonController extends Controller
     }
 
     public function destroy($id){
-        $lesson = Lesson::find($id);
         $course = Course::where('lesson_id', $id)->first();
         if($course){
             return response()->json([
@@ -51,6 +50,7 @@ class LessonController extends Controller
                 'status_code' => 500,
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+        $lesson = Lesson::find($id);
         $lesson->delete();
         return response()->json([
             'message' => 'Success',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 
@@ -44,5 +45,14 @@ class LessonController extends Controller
         }
         $lesson->update($request->only('name'));
         return redirect()->back()->with('success', 'Data berhasil diupdate.');
+    }
+    public function destroy($id){
+        $course = Course::where('lesson_id', $id)->first();
+        if($course){
+            return redirect()->back()->with('failed', 'Gagal menghapus, Pelajaran sedang digunakan.');
+        }
+        $lesson = Lesson::find($id);
+        $lesson->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

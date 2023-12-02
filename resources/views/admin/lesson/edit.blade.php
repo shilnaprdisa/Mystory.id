@@ -45,6 +45,7 @@
                                         <small class="text-danger">
                                             @if ($errors->has('image')) {{$errors->first('image')}} @endif                                                         
                                         </small>
+                                        <br>
                                         <small>direkomendasikan ukuran 271 X 203</small>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
